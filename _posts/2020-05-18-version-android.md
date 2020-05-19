@@ -166,11 +166,11 @@ API: 29.
 ***
 ## Android 11
 
-Дата выхода: предварительная версия выпщуена 19 февраля 2020 года для смартфонов
+Дата выхода: предварительная версия выпущена 19 февраля 2020 года для смартфонов
 Google Pixel.  
 API: 30.
 
-- Поддержка 5G.
+Визуальные изменения:
 - Улучшена поддержка нестандартных дисплеев ([pinhole](https://developer.android.com/guide/topics/display-cutout) - экраны с разными формами вырезов,
   [waterfall](https://developer.android.com/guide/topics/display-cutout) -  
   экран обтекает края устройства, устройства со сгибающимися складными экранами).
@@ -185,6 +185,9 @@ API: 30.
   диалог можно свернуть в "пузырёк", который будет отображаться на экране поверх
   остальных приложений, а при клике - открывать окно с диалогом.
 - Видеозапись экрана.
+- Визуальные индикаторы для 5G.
+
+Конфиденциальность и безопасность:
 - Новые [ограничения](https://developer.android.com/preview/privacy) для
   повышения конфиденциальности пользователей. Например, приложение сможет
   использовать полученное разрешение на доступ к камере, микрофону и геолокации
@@ -193,6 +196,8 @@ API: 30.
 - Обновлена биометрическая [аутентификация](https://developer.android.com/preview/features#biometric-auth), а именно добавлен интерфейс, который позволяет указать
   тип аутентификации - Strong, Weak, Device credential.
 - Добавлен API [BlobStoreManager](https://developer.android.com/reference/android/app/blob/BlobStoreManager) для безопасного обмена бинарными данными между приложениями.
+
+Производительность и качество:
 - Беспроводная [отладка](https://developer.android.com/preview/features#wireless-adb) приложений.
 - В ADB [добавлен](https://developer.android.com/preview/features#incremental)
   инкрементальный режим установки APK-пакетов. Цель - ускорить установку больших
@@ -204,12 +209,70 @@ API: 30.
 - Расширен и улучшен API [Neural Networks](https://developer.android.com/ndk/guides/neuralnetworks).
 - Улучшена работа с экранными клавиатурами: отображение, скрытие, проверка видна
   ли клавиатура в данный момент. [Пример использования](https://github.com/android/user-interface-samples/tree/master/WindowInsetsAnimation).
-- [MediaCodec APIs](https://github.com/android/user-interface-samples/tree/master/WindowInsetsAnimation).
-- Улучшен [Wi-Fi Passpoint](https://developer.android.com/preview/features#wifi-passpoint).
-- ...
+- Обновлен API [MediaCodec](https://github.com/android/user-interface-samples/tree/master/WindowInsetsAnimation):
+  - Новый [способ](https://developer.android.com/preview/features#mediacodec-buffers)
+    распределения буферов.
+  - [Декодирование](https://developer.android.com/preview/features#mediacodec-decoding)
+    с низкой задержкой.
+- Устарело API [OpenSL ES](https://developer.android.com/ndk/guides/audio/opensl).
+  Вместо него рекомендуется использовать [Oboe](https://github.com/google/oboe).
+- Добавлена новая функция [AAudioStream_release()](https://developer.android.com/ndk/reference/group/audio#group___audio_1ga3a3f524d1a36022ff0300699bb0c8f7b), которая
+  освобождает поток, но не закрывает его.
+- Добавлен [MediaParser](https://developer.android.com/reference/android/media/MediaParser) -
+  низкоуровневый API для извлечения данных из медиа-контейнера.
+- Поддержка 5G.
+- Новые возможности для [Wi-Fi Passpoint](https://developer.android.com/preview/features#wifi-passpoint).
+- [Расширен](https://developer.android.com/preview/features#wifi-suggestion)
+  API [Wi-Fi suggestion](https://developer.android.com/guide/topics/connectivity/wifi-suggest).
+- Встроенный [декодер изображений](https://developer.android.com/ndk/guides/image-decoder).
+- [Frame rate API](https://developer.android.com/guide/topics/media/frame-rate) -
+  позволяет информировать систему о предполагаемой частоте кадров. На основе этой
+  информации система определяет и выставляет оптимальную частоту кадров.
+- Режим HDMI с низкой задержкой (известен как "игровой режим") - позволяет
+  отключить постобработку графики на телевизоре или внешнем мониторе.
+- Для более эффективного тестирования в отлаживаемое приложение теперь можно
+  [загружать](https://developer.android.com/preview/features#graphics-debug-layer-injection)
+  внешние графические слои (GLES, Vulkan).
+- Возможность запуска приложения, используя
+  [ANGLE](https://developer.android.com/preview/features/angle), чтобы оценить производительность и решить, должно ли конкретное приложение использовать
+  ANGLE, а не собственные драйверы OpenGL ES.
+- Приложения, которые работают с камерой устройства, теперь смогут отключать
+  виброзвонок во время работы с камерой с помощью метода
+  [setCameraAudioRestriction()](https://developer.android.com/reference/android/hardware/camera2/CameraDevice#setCameraAudioRestriction(int)).
+- Улучшены [возможности](https://developer.android.com/preview/features#camera-emulator)
+  камеры эмулятора Android.
+- Улучшена поддержка анимированных файлов формата HEIF. Теперь метод
+  [ImageDecoder.decodeDrawable ()](https://developer.android.com/reference/android/graphics/ImageDecoder#decodeDrawable(android.graphics.ImageDecoder.Source)) возвращает всю последовательность изображений в виде [AnimatedImageDrawable](https://developer.android.com/reference/android/graphics/drawable/AnimatedImageDrawable) (раньше возвращался
+  один кадр). Также можно извлечь отдельный кадр с помощью метода
+  [MediaMetadataRetriever.getImageAtIndex()](https://developer.android.com/reference/android/media/MediaMetadataRetriever#getImageAtIndex(int)).
+- Обновлены [сервисы](https://developer.android.com/preview/features#a11y),
+  которые позволяют создавать более доступные приложения для людей с
+  ограниченными возможностями.
+
+Другие обновления:
+- Добавлен [API](https://developer.android.com/reference/kotlin/android/app/ActivityManager#gethistoricalprocessexitreasons), который позволяет получать
+  информацию о причинах завершения работы приложения: по инициативе пользователя,
+  из-за сбоя, принудительно завершено системой.
+- Добавлен API [ResourcesLoader](https://developer.android.com/reference/kotlin/android/content/res/loader/ResourcesLoader), благодаря которому можно динамически загружать
+  какие-либо ресурсы во время работы приложения.
+- Динамические
+  [intent-фильтры](https://developer.android.com/preview/features#dynamic-intent-filters).
+- Улучшены сервисы автозаполнения:
+  - Для AssistStructure.ViewNode добавлен новый метод [getHintIdEntry()](https://developer.android.com/reference/android/app/assist/AssistStructure.ViewNode#getHintIdEntry()),
+      который возвращает идентификатор, используемый для установки подсказки,
+      связанной с view.
+  - Чтобы помочь сервисам автозаполнения улучшить свои подсказки, был добавлен
+    способ выявления случаев, когда пользователю были предоставлены варианты
+    автозаполнения, но он ни один не выбрал. [FillEventHistory](https://developer.android.com/reference/kotlin/android/service/autofill/FillEventHistory) в этом случае
+    регистрирует событие типа [TYPE_DATASETS_SHOWN](https://developer.android.com/reference/android/service/autofill/FillEventHistory.Event#TYPE_DATASETS_SHOWN).
 
 ### Полезные ссылки
 [Официальная документация](https://developer.android.com/preview/features). <br>
-Ключевые новшества Android 11 на [opennet](https://www.opennet.ru/opennews/art.shtml?num=52403).
+[Android API Differences Report](https://developer.android.com/sdk/api_diff/r-dp4/changes)
+(API 29 -> DP4).  
+Ключевые новшества Android 11 на opennet:
+[первый](https://www.opennet.ru/opennews/art.shtml?num=52403),
+[второй](https://www.opennet.ru/opennews/art.shtml?num=52572) и
+[третий](https://www.opennet.ru/opennews/art.shtml?num=52801) выпуски.
 
 ***
