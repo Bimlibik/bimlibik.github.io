@@ -164,6 +164,6 @@ ART может компилировать байт-код заранее, а н�
 
 ## Полезные ссылки
 
-[Официальная документация](https://developer.android.com/guide/platform).
+[Официальная документация](https://developer.android.com/guide/platform). <br>
 Hardware Abstraction Layer (HAL) на [wiki](https://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D0%BE%D0%B9_%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82%D0%BD%D1%8B%D1%85_%D0%B0%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA%D1%86%D0%B8%D0%B9). <br>
 Android Runtime на [wiki](https://ru.wikipedia.org/wiki/Android_Runtime).
