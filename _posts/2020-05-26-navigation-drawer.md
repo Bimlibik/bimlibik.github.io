@@ -1,7 +1,7 @@
 ---
 title: Navigation Drawer
 author: Leslie M.
-date: "2020-05-25 17:40:00 +0800"
+date: "2020-05-26 18:20:00 +0800"
 categories: [Android, UI]
 tags: [android, ui, navigation]
 ---
