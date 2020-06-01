@@ -30,7 +30,7 @@ toc: false
 ## Содержание (теория)
 
 - [Архитектура платформы Android](http://bimlibik.github.io/posts/how-does-android-work/)
-- [Манифест приложения]()
+- [Манифест приложения](https://bimlibik.github.io/posts/manifest-file/)
 - Компоненты приложения
     - [Activity, Lifecycle]()
     - [Tasks and Backstack]()
