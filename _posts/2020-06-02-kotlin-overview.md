@@ -48,6 +48,7 @@ Studio, можно использовать при разработке на Kot
 В данном разделе будут ссылки на статьи о Kotlin. Все в одном месте! Удобно же?
 
 [Основной синтаксис](https://bimlibik.github.io/posts/kotlin-basic-syntax/).
+[Ключевое слово open](https://bimlibik.github.io/posts/kotlin-open-keyword/).
 
 ***
 
