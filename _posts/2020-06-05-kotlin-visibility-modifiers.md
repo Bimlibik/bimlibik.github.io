@@ -160,7 +160,7 @@ public class Student() {
 
 ***
 
-## Полезный ссылки
+## Полезные ссылки
 
 Официальная документация - [Visibility Modifiers](https://kotlinlang.org/docs/reference/visibility-modifiers.html "kotlinlang.org"). <br>
 Документация в переводе на русский - [Модификаторы доступа](https://kotlinlang.ru/docs/reference/visibility-modifiers.html "kotlinlang.ru"). <br>
