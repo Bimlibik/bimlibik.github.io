@@ -2,8 +2,8 @@
 title: Kotlin. Ключевое слово open. Наследование
 author: Leslie M.
 date: "2020-06-05 04:20"
-categories: [Kotlin, Theory]
-tags: [kotlin, theory, basics, keyword_open]
+categories: [Kotlin, Basics]
+tags: [kotlin, theory, basics, open]
 ---
 
 По умолчанию в Kotlin нельзя унаследовать один класс от другого. Связано это с

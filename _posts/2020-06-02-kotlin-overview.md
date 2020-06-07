@@ -2,7 +2,7 @@
 title: Kotlin. Общий обзор
 author: Leslie M.
 date: "2020-06-02 01:40:00 +0800"
-categories: [Kotlin, Theory]
+categories: [Kotlin, Basics]
 tags: [kotlin, theory, basics]
 ---
 
@@ -45,11 +45,12 @@ Studio, можно использовать при разработке на Kot
 
 ## Статьи
 
-В данном разделе будут ссылки на статьи о Kotlin. Все в одном месте! Удобно же?
+В данном разделе будут ссылки на мои статьи о Kotlin. Все в одном месте! Удобно же?
 
 [Основной синтаксис](https://bimlibik.github.io/posts/kotlin-basic-syntax/). <br>
 [Ключевое слово open](https://bimlibik.github.io/posts/kotlin-open-keyword/). <br>
-[Модификаторы доступа](https://bimlibik.github.io/posts/kotlin-visibility-modifiers/) <br>
+[Модификаторы доступа](https://bimlibik.github.io/posts/kotlin-visibility-modifiers/). <br>
+[Модификатор const](https://bimlibik.github.io/posts/kotlin-const-modifier/). <br>
 
 ***
 

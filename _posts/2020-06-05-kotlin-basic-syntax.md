@@ -2,8 +2,8 @@
 title: Kotlin. Основной синтаксис
 author: Leslie M.
 date: "2020-06-05 02:50"
-categories: [Kotlin, Theory]
-tags: [kotlin, theory, basics]
+categories: [Kotlin, Basics]
+tags: [kotlin, theory, syntax]
 ---
 
 В данной статье рассмотрим основной синтаксис языка Kotlin.

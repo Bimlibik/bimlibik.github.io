@@ -2,7 +2,7 @@
 title: Kotlin. Модификаторы доступа - private, protected, internal, public
 author: Leslie M.
 date: "2020-06-05 14:10:00 +0800"
-categories: [Kotlin, Theory]
+categories: [Kotlin, Basics]
 tags: [kotlin, theory, basics, modifiers]
 ---
 
