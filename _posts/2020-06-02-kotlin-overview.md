@@ -51,6 +51,7 @@ Studio, можно использовать при разработке на Kot
 [Ключевое слово open](https://bimlibik.github.io/posts/kotlin-open-keyword/). <br>
 [Модификаторы доступа](https://bimlibik.github.io/posts/kotlin-visibility-modifiers/). <br>
 [Модификатор const](https://bimlibik.github.io/posts/kotlin-const-modifier/). <br>
+[Отложенная и ленивая инициализация свойств](https://bimlibik.github.io/posts/kotlin-lateinit-and-lazy/). <br>
 
 ***
 

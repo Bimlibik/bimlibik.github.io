@@ -1,7 +1,7 @@
 ---
 title: Kotlin. Основной синтаксис
 author: Leslie M.
-date: "2020-06-05 02:50"
+date: "2020-06-05 02:50:00 +0800"
 categories: [Kotlin, Basics]
 tags: [kotlin, theory, syntax]
 ---
