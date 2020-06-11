@@ -48,6 +48,7 @@ Studio, можно использовать при разработке на Kot
 В данном разделе будут ссылки на мои статьи о Kotlin. Все в одном месте! Удобно же?
 
 [Основной синтаксис](https://bimlibik.github.io/posts/kotlin-basic-syntax/). <br>
+[Null-безопасность. Операторы "?.", "!!.", "?:"](https://bimlibik.github.io/posts/kotlin-null-safety/). <br>
 [Ключевое слово open](https://bimlibik.github.io/posts/kotlin-open-keyword/). <br>
 [Модификаторы доступа](https://bimlibik.github.io/posts/kotlin-visibility-modifiers/). <br>
 [Модификатор const](https://bimlibik.github.io/posts/kotlin-const-modifier/). <br>
