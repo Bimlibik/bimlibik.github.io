@@ -1,5 +1,5 @@
 ---
-title: Функции области видимости (Scope Functions)
+title: Kotlin. Функции области видимости (Scope Functions)
 author: Leslie M.
 date: "2020-06-14 13:44:00 +0800"
 categories: [Kotlin, Basics]
