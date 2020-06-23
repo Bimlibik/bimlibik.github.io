@@ -295,6 +295,9 @@ println(name)
 - Добавление объекту дополнительных значений - `also`.
 - Группировка всех функций, вызываемых для объекта: `with`.
 
+Для тех, кто лучше воспринимает информацию в картинках и схемах (когда-нибудь перерисую покрасивше):  
+[![scope-functions-cheet-sheet](/assets/img/posts/scope-functions/scope-functions-cheet-sheet.jpg "Клик, чтобы увеличить")](/assets/img/posts/scope-functions/scope-functions-cheet-sheet.jpg)
+
 ***
 
 ## Вывод
