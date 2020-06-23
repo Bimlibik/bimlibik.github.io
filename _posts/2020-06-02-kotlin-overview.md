@@ -55,6 +55,7 @@ Studio, можно использовать при разработке на Kot
 [Отложенная и ленивая инициализация свойств](https://bimlibik.github.io/posts/kotlin-lateinit-and-lazy/). <br>
 [Функции области видимости (Scope Functions)](https://bimlibik.github.io/posts/scope-functions/). <br>
 [Классы данных (Data classes)](https://bimlibik.github.io/posts/data-classes/). <br>
+[Вложенные и внутренние классы](https://bimlibik.github.io/posts/nested-and-inner-clesses/). <br>
 
 ***
 
