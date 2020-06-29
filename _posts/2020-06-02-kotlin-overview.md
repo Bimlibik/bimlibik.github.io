@@ -56,6 +56,7 @@ Studio, можно использовать при разработке на Kot
 [Функции области видимости (Scope Functions)](https://bimlibik.github.io/posts/kotlin-scope-functions/). <br>
 [Классы данных (Data classes)](https://bimlibik.github.io/posts/kotlin-data-classes/). <br>
 [Вложенные и внутренние классы](https://bimlibik.github.io/posts/kotlin-nested-and-inner-clesses/). <br>
+[Классы перечислений (enum)](https://bimlibik.github.io/posts/kotlin-enum-classes/). <br>
 [Изолированные классы (sealed classes)](https://bimlibik.github.io/posts/kotlin-sealed-classes/). <br>
 
 ***
