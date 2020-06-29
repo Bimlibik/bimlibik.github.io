@@ -29,6 +29,7 @@ toc: false
 
 ## Содержание (теория)
 
+- [Язык программирования - Kotlin](https://bimlibik.github.io/posts/kotlin-overview/)
 - [Архитектура платформы Android](http://bimlibik.github.io/posts/how-does-android-work/)
 - [Манифест приложения](https://bimlibik.github.io/posts/manifest-file/)
 - Компоненты приложения
