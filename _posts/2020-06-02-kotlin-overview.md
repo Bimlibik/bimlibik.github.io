@@ -58,6 +58,7 @@ Studio, можно использовать при разработке на Kot
 [Вложенные и внутренние классы](https://bimlibik.github.io/posts/kotlin-nested-and-inner-clesses/). <br>
 [Классы перечислений (enum)](https://bimlibik.github.io/posts/kotlin-enum-classes/). <br>
 [Изолированные классы (sealed classes)](https://bimlibik.github.io/posts/kotlin-sealed-classes/). <br>
+[Основной и вторичный конструкторы. Init блок](https://bimlibik.github.io/posts/kotlin-constructors-and-init-block/). <br>
 
 ***
 
