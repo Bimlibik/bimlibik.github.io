@@ -45,20 +45,25 @@ Studio, можно использовать при разработке на Kot
 
 ## Статьи
 
-В данном разделе будут ссылки на мои статьи о Kotlin. Все в одном месте! Удобно же?
+В данном разделе будут ссылки на мои статьи о Kotlin.
 
 [Основной синтаксис](https://bimlibik.github.io/posts/kotlin-basic-syntax/). <br>
 [Null-безопасность. Операторы "?.", "!!.", "?:"](https://bimlibik.github.io/posts/kotlin-null-safety/). <br>
-[Ключевое слово open](https://bimlibik.github.io/posts/kotlin-open-keyword/). <br>
 [Модификаторы доступа](https://bimlibik.github.io/posts/kotlin-visibility-modifiers/). <br>
 [Модификатор const](https://bimlibik.github.io/posts/kotlin-const-modifier/). <br>
 [Отложенная и ленивая инициализация свойств](https://bimlibik.github.io/posts/kotlin-lateinit-and-lazy/). <br>
 [Функции области видимости (Scope Functions)](https://bimlibik.github.io/posts/kotlin-scope-functions/). <br>
+
+
+### Классы и объекты
+
+[Ключевое слово open](https://bimlibik.github.io/posts/kotlin-open-keyword/). <br>
 [Классы данных (Data classes)](https://bimlibik.github.io/posts/kotlin-data-classes/). <br>
 [Вложенные и внутренние классы](https://bimlibik.github.io/posts/kotlin-nested-and-inner-clesses/). <br>
 [Классы перечислений (enum)](https://bimlibik.github.io/posts/kotlin-enum-classes/). <br>
 [Изолированные классы (sealed classes)](https://bimlibik.github.io/posts/kotlin-sealed-classes/). <br>
 [Основной и вторичный конструкторы. Init блок](https://bimlibik.github.io/posts/kotlin-constructors-and-init-block/). <br>
+[Абстрактные классы и интерфейсы](https://bimlibik.github.io/posts/kotlin-abstract-classes-and-interfaces/). <br>
 
 ***
 
