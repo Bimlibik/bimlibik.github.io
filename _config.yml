@@ -29,6 +29,9 @@ github:
 twitter:
   username: twitter_username            # change to your twitter username
 
+telegram:
+  username: leslie_m                # change to your telegram username
+
 social:
   name: Leslie M.                 # it will shows as the copyright owner in Footer
   email: 554476744j@gmail.com             # change to your email address
