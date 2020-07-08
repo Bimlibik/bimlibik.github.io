@@ -67,9 +67,9 @@ main() {
 
   local _count=0
 
-  for _file in $(ls -r "$POST_DIR")
+  for _file in `find $POST_DIR -type f`
   do
-    _filepath="$POST_DIR/$_file"
+    _filepath=$_file
     _filename="${_file%.*}"     # jekyll cannot read the extension of a file, so omit it.
     _filename=${_filename:11}   # remove the date
 
