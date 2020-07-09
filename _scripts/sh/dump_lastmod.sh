@@ -32,7 +32,7 @@ _init() {
 
 
 _has_changed() {
-  local _log_count=`git log --pretty=%ad $1 | wc -l | sed 's/ *//'`
+  local _log_count=`git log --follow --pretty=%ad $1 | wc -l | sed 's/ *//'`
   _log_count=$(($_log_count + 0))
 
   if [[ $_log_count > 1 ]]; then
