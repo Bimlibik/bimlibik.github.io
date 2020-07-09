@@ -40,6 +40,8 @@ toc: false
     - [Intent]()
 - User Interface
     - [Fragments]()
+    - Data Views
+      - [RecyclerView](https://bimlibik.github.io/posts/recycler-view/)
     - ...
 - Storage
     - ...
