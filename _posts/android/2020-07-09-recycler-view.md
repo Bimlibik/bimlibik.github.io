@@ -249,14 +249,139 @@ data class Tree(
 
 ***
 
-## Виды `LayoutManager`'ов
+## Стандартные LayoutManager'ы
 
-`RecyclerView` использует `LayoutManager` для того, чтобы расположить элементы списка на экране. При этом каждый `LayoutManager` позволяет расположить их по-своему. Существует три стандартных `LayoutManager`'а:
+`RecyclerView` использует `LayoutManager` для того, чтобы расположить элементы списка на экране. При этом каждый `LayoutManager` позволяет расположить их по-своему.
+
+
+### Виды
+
+Существует три стандартных `LayoutManager`'а:
 - `LinearLayoutManager` - упорядочивает элементы в виде обычного вертикального или горизонтального списка.
 - `GridLayoutManager` - размещает элементы в виде сетки одинакового размера.
 - `StaggeredGridLayoutManager` - размещает элементы в виде неравномерной сетки: каждый столбец будет слегка смещён по сравнению с предыдущим.
 
 Как правило этих вариантов достаточно для большинства ситуаций. Но если это не ваш случай, то можно создать свой собственный `LayoutManager`, расширив класс `RecyclerView.LayoutManager`.
+
+
+### LinearLayoutManager
+
+По умолчанию `LinearLayoutManager` упорядочивает элементы  в виде вертикального списка.
+
+```
+// вертикальный список
+layoutManager = LinearLayoutManager(context)
+```
+
+У данного класса есть другой конструктор, который позволяет явно задать ориентацию списка. Помимо контекста, ему требуется два параметра:
+- Ориентация - задаётся с помощью констант `HORIZONTAL` и `VERTICAL` класса `LinearLayoutManager`.
+- Булево значение: если передать `true` - список будет установлен в обратном порядке (начало будет в конце).
+
+```
+// вертикальная ориентация
+layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+// горизонтальная ориентация
+layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+```
+
+Эти параметры можно устанавливать с помощью специальных методов:
+
+```
+val linearManager = LinearLayoutManager(context)
+linearManager.apply {
+  orientation = LinearLayoutManager.HORIZONTAL
+  reverseLayout = false
+}
+```
+
+Либо с помощью специальных атрибутов в XML:
+```
+<androidx.recyclerview.widget.RecyclerView
+    ...
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:orientation="horizontal"
+    app:reverseLayout="false"/>
+```
+
+
+### GridLayoutManager
+
+Размещает элементы списка в виде сетки одинакового размера.
+
+У класса `GridLayoutManager` есть два конструктора. Для использования первого конструктора необходимы два параметра: контекст и количество столбцов в сетке.
+
+```
+layoutManager = GridLayoutManager(context, 3)
+```
+
+Для второго конструктора - четыре параметра:
+- контекст;
+- количество столбцов в сетке;
+- ориентация списка - задаётся с помощью констант `HORIZONTAL` и `VERTICAL` класса `LinearLayoutManager`;
+- булево значение - если передать `true` - список будет установлен в обратном порядке (начало будет в конце).
+
+Если задать горизонтальную ориентацию, то в списке будет столько рядов, сколько было задано вторым параметром (в данном примере = 3), а листаться, само собой, будет в бок.
+
+```
+layoutManager = GridLayoutManager(context, 3, LinearLayoutManager.HORIZONTAL, false)
+```
+
+То же самое можно задать с помощью XML атрибутов:
+
+```
+<androidx.recyclerview.widget.RecyclerView
+    ...
+    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+    app:spanCount="3"
+    android:orientation="horizontal"
+    app:reverseLayout="false"/>
+```
+
+
+### StaggeredGridLayoutManager
+
+Размещает элементы в виде неравномерной сетки.
+
+У класса `StaggeredGridLayoutManager` всего один конструктор с двумя параметрами:
+- количество столбцов в сетке;
+- ориентация списка - задаётся с помощью констант `HORIZONTAL` и `VERTICAL` класса `StaggeredGridLayoutManager`.
+
+Если задать горизонтальную ориентацию, то в списке будет столько рядов, сколько было задано первым параметром (в данном примере = 3), а листаться, само собой, будет в бок.
+
+```
+layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+```
+
+То же самое можно задать с помощью XML атрибутов:
+
+```
+<androidx.recyclerview.widget.RecyclerView
+    ...
+    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+    app:spanCount="3"
+    android:orientation="vertical" />
+```
+
+### Динамическое переключение
+
+Переключаться между `LayoutManager`'ами можно динамически. Например, при нажатии на кнопку:
+
+```
+btn_linear.setOnClickListener {
+  recycler_view.apply { layoutManager = LinearLayoutManager(requireContext()) }
+}
+
+btn_grid.setOnClickListener {
+  recycler_view.apply { layoutManager = GridLayoutManager(requireContext(), 3) }
+}
+
+btn_staggered.setOnClickListener {
+  recycler_view.apply { layoutManager =
+    StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+  }
+}
+```
 
 ***
 
