@@ -3,7 +3,7 @@ title: RecyclerView
 author: Leslie M.
 date: "2020-07-09 14:55:00 +0800"
 categories: [Android, UI]
-tags: [android, ui, recyclerView]
+tags: [android, ui, recyclerView, layoutManager]
 ---
 
 `RecyclerView` - компонент для отображения элементов списка, который является более продвинутой и гибкой версией `ListView`, но не является его родственником, а относится к семейству `ViewGroup`.
@@ -382,6 +382,31 @@ btn_staggered.setOnClickListener {
   }
 }
 ```
+
+***
+
+## SnapHelper
+
+`SnapHelper` позволяет настроить "прилипание" элементов к определённой позиции в `RecyclerView`. Например, при пролистывании можно настроить прилипание таким образом, что первый видимый элемент будет сам прилипать к краю экрана или ближайший к центру элемент будет автоматически вставать в центр экрана.
+
+Существует два стандартных класса для работы с прилипанием элементов: `LinearSnapHelper` и `PagerSnapHelper`.
+
+`LinearSnapHelper` застовляет ближайший к центру элемент вставать в центр экрана. Допустим вы листаете список и в какой-то момент убрали пальцы от экрана. Список без вашего участия автоматически прокрутится и установит в центр экрана ближайший элемент.
+
+`PagerSnapHelper` предназначен для полноэкранных элементов и ведёт себя как `ViewPager`.
+
+Добавить себе в проект просто:
+
+```
+val snapHelper: SnapHelper = LinearSnapHelper()  // или PagerSnapHelper()
+snapHelper.attachToRecyclerView(recyclerView)
+
+// более короткий вариант
+LinearSnapHelper().attachToRecyclerView(recyclerView)
+PagerSnapHelper().attachToRecyclerView(recyclerView)
+```
+
+Если ни один вариант вас не устраивает, то создайте свою собственную реализацию этих классов и опишите в нёй необходимое поведение элементов при пролистывании списка.
 
 ***
 
