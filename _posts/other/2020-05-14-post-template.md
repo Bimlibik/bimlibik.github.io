@@ -80,9 +80,9 @@ TOC расшифровывается как **T**able **o**f **C**ontents.
 |Жирный курсив|***|Слово выделяется с двух сторон|
 |Маркированный список|-||
 
+***
 
 ### Таблицы
-***
 
 Синтаксис:
 ```
@@ -100,6 +100,15 @@ TOC расшифровывается как **T**able **o**f **C**ontents.
 |Груша|3|60|
 
 ***
+
+### Несколько картинок по центру экрана
+
+```
+<p align="center">
+  <img src="/assets/img/posts/android-recycler-view/header.png" alt="demo header" width="400"/>
+  <img src="/assets/img/posts/android-recycler-view/footer.png" alt="demo footer" width="400"/>
+</p>
+```
 
 ## Плагины
 
