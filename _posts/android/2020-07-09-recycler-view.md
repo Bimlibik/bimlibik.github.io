@@ -3,7 +3,7 @@ title: RecyclerView
 author: Leslie M.
 date: "2020-07-09 14:55:00 +0800"
 categories: [Android, UI]
-tags: [android, ui, recyclerView, layoutManager]
+tags: [android, ui, recyclerView, layoutManager, snapping, viewType]
 ---
 
 `RecyclerView` - компонент для отображения элементов списка, который является более продвинутой и гибкой версией `ListView`, но не является его родственником, а относится к семейству `ViewGroup`.
@@ -579,6 +579,12 @@ override fun onBindViewHolder(holder: GenericViewHolder, position: Int) {
 }
 ```
 
+Метод `getItemCount()` должен возвращать количество элементов в `RecyclerView`. Поэтому следует учесть наличие header'а и footer'а.
+
+```
+override fun getItemCount(): Int = trees.size + 2
+```
+
 Адаптер готов к использованию. Результат будет примерно таким:
 
 <p class="post-few-img">
@@ -587,10 +593,229 @@ override fun onBindViewHolder(holder: GenericViewHolder, position: Int) {
 </p>
 
 
+### Несколько списков в одном RecyclerView
+
+У меня как-то возникала необходимость отображения двух списков на одном экране друг за другом. При этом при клике по элементу из первого списка он должен был переместиться во второй список и наоборот.
+
+Первая появившаяся мысль - добавить на экран два `RecyclerView`. И это вполне себе работает. Но возникает ряд неудобств, одно из них - некорректная работа **overScroll**. Эффект **overScroll** визуально показывает, что вы дошли до конца или начала списка.
+
+<img src="/assets/img/posts/android-recycler-view/over-scroll.png" alt="demo over scroll" width="350"/>
+
+И если на экране два `RecyclerView`, то эффект **overScroll** появляется для каждого из них. Выглядит не очень красиво. Конечно можно **overScroll** эффект отключить, но тогда появляется неуверенность: "А дошел ли я до конца списка?".
+
+В общем нашлось решение, при котором один `RecyclerView` работает с двумя списками и завязано это всё на использовании  `viewType` из примера выше.
+
+Создаём два макета - один для элементов первого списка, второй - для элементов второго списка. У меня они отличаются только цветом фона - у элементов первого списка он белый, у второго - красный.
+
+```
+// item_tree_multiple_1.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+</LinearLayout>
 
 
+// item_tree_multiple_2.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#F3BBBB">
 
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
 
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+</LinearLayout>
+```
+
+Константы для хранения значений `viewType`:
+
+```
+companion object {
+  const val FIRST_LIST_ITEM_VIEW = 1
+  const val SECOND_LIST_ITEM_VIEW = 2
+}
+```
+
+Также используем для удобства базовый класс `GenericViewHolder`.
+
+```
+abstract class GenericViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+  abstract fun bindView(position: Int)
+}
+```
+
+От него будут наследоваться два класса `ViewHolder`: один для элементов первого списка, второй для элементов второго списка.
+
+```
+private inner class FirstListItemViewHolder(itemView: View) : GenericViewHolder(itemView) {
+    val name: TextView = itemView.findViewById(R.id.name)
+    val description: TextView = itemView.findViewById(R.id.description)
+
+    override fun bindView(position: Int) {
+        ...
+    }
+}
+
+private inner class SecondListItemViewHolder(itemView: View) : GenericViewHolder(itemView) {
+    val name: TextView = itemView.findViewById(R.id.name)
+    val description: TextView = itemView.findViewById(R.id.description)
+
+    override fun bindView(position: Int) {
+        ...
+    }
+}
+```
+
+Каждый из них будет по своему реализовывать метод `bindView()`. Для элементов первого списка ничего рассчитывать не требуется, нужно просто привязать к объектам `viewHolder` данные по порядку.
+
+```
+private inner class FirstListItemViewHolder(itemView: View) : GenericViewHolder(itemView) {
+  val name: TextView = itemView.findViewById(R.id.name)
+  val description: TextView = itemView.findViewById(R.id.description)
+
+  override fun bindView(position: Int) {
+    name.text = list1[position].name
+    description.text = list1[position].description
+  }
+}
+```
+
+Второй список должен отображаться сразу после первого. Так как номер позиции может быть любым числом от 0 до `list1.size + list2.size`, в методе `bindView()` класса `SecondListItemViewHolder` потребуется произвести расчеты.
+
+```
+private inner class SecondListItemViewHolder(itemView: View) : GenericViewHolder(itemView) {
+  val name: TextView = itemView.findViewById(R.id.name)
+  val description: TextView = itemView.findViewById(R.id.description)
+
+  override fun bindView(position: Int) {
+    val i = if (list1.size > 0) {
+      position - list1.size
+    } else {
+      position
+    }
+    name.text = list2[i].name
+    description.text = list2[i].description
+  }
+}
+```
+
+Также обратите внимание что оба класса являются [внутренними](https://bimlibik.github.io/posts/kotlin-nested-and-inner-clesses/) (модификатор `inner`), так как им для привязки данных требуется обращаться к компонентам адаптера `list1` и `list2`.
+
+Переходим к коду адаптера. В методе `getItemViewType()` нужно предусмотреть все возможные сценарии: когда в обоих списках есть элементы и когда в одном из списков нет элементов.
+
+```
+override fun getItemViewType(position: Int): Int {
+  when {
+    list1.size > 0 && list2.size > 0 -> {
+      return if (position >= list1.size) SECOND_LIST_ITEM_VIEW
+      else FIRST_LIST_ITEM_VIEW
+    }
+    list1.size == 0 && list2.size > 0 -> return SECOND_LIST_ITEM_VIEW
+    list1.size > 0 && list2.size == 0 -> return FIRST_LIST_ITEM_VIEW
+  }
+  return super.getItemViewType(position)
+}
+```
+
+В методе `onCreateViewHolder()` создаём объект `viewHolder` в зависимости от `viewType`.
+
+```
+override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericViewHolder {
+  val view: View
+  return when(viewType) {
+    FIRST_LIST_ITEM_VIEW -> {
+      view = LayoutInflater.from(parent.context).inflate(R.layout.item_tree_multiple_1, parent, false)
+      FirstListItemViewHolder(view)
+    }
+    else -> {
+      // SECOND_LIST_ITEM_VIEW
+      view = LayoutInflater.from(parent.context).inflate(R.layout.item_tree_multiple_2, parent, false)
+      SecondListItemViewHolder(view)
+    }
+  }
+
+}
+```
+
+В методе `onBindViewHolder()` вызываем метод привязки данных `bindView()`, который переопределён во всех наших классах `ViewHolder`, а также вешаем слушателя.
+
+```
+override fun onBindViewHolder(holder: GenericViewHolder, position: Int) {
+  holder.bindView(position)
+  holder.itemView.setOnClickListener { updateUi(holder.adapterPosition, holder.itemView.context) }
+}
+```
+
+Метод `getItemCount()` должен возвращать количество элементов в `RecyclerView`. Поэтому следует учесть наличие двух списков.
+
+```
+override fun getItemCount(): Int = list1.size + list2.size
+```
+
+При клике по элементу из первого или второго списка будет вызван метод `updateUi()`, который отмечает, что по элементу кликнули и переносит его в другой список.
+
+```
+private fun updateUi(position: Int, context: Context) {
+  if (position >= list1.size) {
+    list2[position - list1.size].clicked = !list2[position - list1.size].clicked
+  } else {
+    list1[position].clicked = !list1[position].clicked
+  }
+  sortTrees()
+  Toast.makeText(context, "$position", Toast.LENGTH_SHORT).show()
+}
+
+private fun sortTrees() {
+  list1.clear()
+  list2.clear()
+  for (tree in trees) {
+    if (tree.clicked) {
+      list2.add(tree)
+    } else {
+      list1.add(tree)
+    }
+  }
+notifyDataSetChanged()
+}
+```
+
+Адаптер готов к использованию. Результат будет примерно таким:
+
+<img src="/assets/img/posts/android-recycler-view/multiple-lists.gif" alt="demo multiple lists" width="350"/>
+
+Необязательно делать списки динамическими, таким образом можно отображать и статические списки. И даже комбинировать с предыдущим примером - добавлять header (один или для всех списков) и footer.
+
+***
 
 ## Полезные ссылки
 
@@ -601,3 +826,5 @@ override fun onBindViewHolder(holder: GenericViewHolder, position: Int) {
 
 **Кастомизация:**  
 [Having multiple lists in a single RecyclerView](https://github.com/masudias/dynamic-recyclerview/wiki "github.com") - гайд по использованию нескольких списков в одном `RecyclerView`.
+
+[Код из примеров](https://github.com/Bimlibik/Examples/tree/master/RecyclerView "github.com").
