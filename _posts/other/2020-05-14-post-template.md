@@ -103,10 +103,12 @@ TOC расшифровывается как **T**able **o**f **C**ontents.
 
 ### Несколько картинок по центру экрана
 
+Этот пример рабочий для всех, только  поменяйте класс на `align="center"`.
+
 ```
-<p align="center">
-  <img src="/assets/img/posts/android-recycler-view/header.png" alt="demo header" width="400"/>
-  <img src="/assets/img/posts/android-recycler-view/footer.png" alt="demo footer" width="400"/>
+<p class="post-few-img">
+  <img src="/assets/img/posts/android-recycler-view/header.png" alt="demo header" height="550"/>
+  <img src="/assets/img/posts/android-recycler-view/footer.png" alt="demo footer" height="550"/>
 </p>
 ```
 
