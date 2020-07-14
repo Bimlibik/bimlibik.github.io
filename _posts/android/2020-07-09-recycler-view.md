@@ -410,8 +410,192 @@ PagerSnapHelper().attachToRecyclerView(recyclerView)
 
 ***
 
+## Использование нескольких макетов для элементов RecyclerView
+
+При отображении списка все его элементы выглядят одинаково и в большинстве случаев это оправдано и разработчика вполне устраивает. Тем не менее возникают ситуации, когда нужно один или целый ряд элементов выделять из остальных. Например:
+- требуется добавить header или footer;
+- отображение двух списков в одном `RecyclerView`;
+- выделение определённого элемента в списке.
+
+
+### ViewType
+
+Одним из способов, который используется для выделения элементов в списке, является присвоение `viewType` каждому объекту `viewHolder`. `ViewType` - это произвольное цифровое значение от 0 и выше, которое необходимо для того, чтобы различать объекты `viewHolder` между собой. Например, если вам требуется добавить header и footer, при этом элементы списка должны выглядеть идентично, то у вас будет три `viewType`: для header'а, footer'а и элемента списка.
+
+Для начала добавьте в папку **res/layout** три макета: для header'а, footer'а и элемента списка.
+
+```
+// header.xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="30sp"
+    android:textColor="#00695C"
+    android:textStyle="bold"
+    android:textAllCaps="true"
+    android:text="Header"
+    android:gravity="center"/>
+
+// footer.xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="30sp"
+    android:textColor="#C62828"
+    android:textStyle="bold"
+    android:textAllCaps="true"
+    android:text="Footer"
+    android:gravity="center"/>
+
+// item_tree_simple.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+</LinearLayout>
+```
+
+В классе адаптера создадим константы, которые будут хранить значения `viewType`.
+
+```
+class HeaderAndFooterAdapter {
+  ...
+
+  companion object {
+    const val HEADER_VIEW = 1
+    const val LIST_ITEM_VIEW = 2
+    const val FOOTER_VIEW = 3
+  }
+}
+```
+
+Для удобства создадим базовый класс `GenericViewHolder`.
+
+```
+class HeaderAndFooterAdapter {
+  ...
+
+  abstract class GenericViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    abstract fun bindView(position: Int)
+
+  }
+}
+```
+
+От него будут наследоваться три класса `ViewHolder`. Каждый из них отвечает за свой макет и привязку к нему данных.
+
+```
+private inner class ListItemViewHolder(itemView: View) : GenericViewHolder(itemView) {
+    val name: TextView = itemView.findViewById(R.id.name)
+    val description: TextView = itemView.findViewById(R.id.description)
+
+    override fun bindView(position: Int) {
+      name.text = trees[position - 1].name
+      description.text = trees[position - 1].description
+    }
+}
+
+private class HeaderViewHolder(itemView: View) : GenericViewHolder(itemView) {
+    val header: TextView = itemView.findViewById(R.id.header)
+
+    override fun bindView(position: Int) {
+      header.text = "I'm a header"
+    }
+}
+
+private class FooterViewHolder(itemView: View) : GenericViewHolder(itemView) {
+    val footer: TextView = itemView.findViewById(R.id.footer)
+
+    override fun bindView(position: Int) {
+      footer.text = "I'm a footer"
+    }
+}
+```
+
+Обратите внимание на класс `ListItemViewHolder`. В отличии от остальных он является [внутренним](https://bimlibik.github.io/posts/kotlin-nested-and-inner-clesses/) (модификатор `inner`), так как ему для привязки данных требуется обращаться к свойству `trees` своего внешнего класса. Из поступившего номера позиции вычитается единица, так как нулевая позиция занята header'ом и не будет сюда поступать.
+
+Теперь возьмёмся за код самого адаптера. С помощью метода `getItemViewType()` зададим `viewType` каждому объекту `viewHolder` в зависимости от его позиции в списке. Первый и последний элемент списка - это header и footer. Если в списке 15 элементов, то позиция для footer'а будет **15 + 1**, так как header всегда находится в нулевой позиции.
+
+```
+override fun getItemViewType(position: Int): Int {
+    return when (position) {
+        0 -> HEADER_VIEW
+        trees.size + 1 -> FOOTER_VIEW
+        else -> LIST_ITEM_VIEW
+    }
+}
+```
+
+В методе `onCreateViewHolder()` создаём объект `viewHolder` в зависимости от `viewType`.
+
+```
+override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericViewHolder {
+  val view: View
+  return when(viewType) {
+    HEADER_VIEW -> {
+      view = LayoutInflater.from(parent.context).inflate(R.layout.header, parent, false)
+      HeaderViewHolder(view)
+    }
+    FOOTER_VIEW -> {
+      view = LayoutInflater.from(parent.context).inflate(R.layout.footer, parent, false)
+      FooterViewHolder(view)
+    }
+    else -> {
+      // LIST_ITEM_VIEW
+      view = LayoutInflater.from(parent.context).inflate(R.layout.item_tree_simple, parent, false)
+      ListItemViewHolder(view)
+    }
+  }
+}
+```
+
+В методе `onBindViewHolder()` вызываем метод привязки данных `bindView()`, который переопределён во всех наших классах `ViewHolder`.
+
+```
+override fun onBindViewHolder(holder: GenericViewHolder, position: Int) {
+  holder.bindView(position)
+}
+```
+
+Адаптер готов к использованию. Результат будет примерно таким:
+
+<p align="center">
+  <img src="/assets/img/posts/android-recycler-view/header.png" alt="demo header" width="400"/>
+  <img src="/assets/img/posts/android-recycler-view/footer.png" alt="demo footer" width="400"/>
+</p>
+
+
+
+
+
 ## Полезные ссылки
 
+**Общие ссылки по теме:**  
 [Create a List with RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview "developer.android.com") - гайд из официальной документации.  
 [RecyclerView](https://developer.android.com/reference/kotlin/androidx/recyclerview/widget/package-summary "developer.android.com") - документация по классу (androidx).  
 [Using the RecyclerView](https://guides.codepath.com/android/using-the-recyclerview "guides.codepath.com") - гайд от codepath.
+
+**Кастомизация:**  
+[Having multiple lists in a single RecyclerView](https://github.com/masudias/dynamic-recyclerview/wiki "github.com") - гайд по использованию нескольких списков в одном `RecyclerView`.
