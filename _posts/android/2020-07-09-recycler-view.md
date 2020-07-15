@@ -3,7 +3,7 @@ title: RecyclerView
 author: Leslie M.
 date: "2020-07-09 14:55:00 +0800"
 categories: [Android, UI]
-tags: [android, ui, recyclerView, layoutManager, snapping, viewType]
+tags: [android, ui, recyclerView, layoutManager, snapping, viewType, mergeAdapter, concatAdapter]
 ---
 
 `RecyclerView` - компонент для отображения элементов списка, который является более продвинутой и гибкой версией `ListView`, но не является его родственником, а относится к семейству `ViewGroup`.
@@ -815,6 +815,316 @@ notifyDataSetChanged()
 
 Необязательно делать списки динамическими, таким образом можно отображать и статические списки. И даже комбинировать с предыдущим примером - добавлять header (один или для всех списков) и footer.
 
+
+## ConcatAdapter
+
+Несмотря на то, что все примеры, описанные в предыдущем разделе, вполне себе рабочие, в плане кода выглядят не очень хорошо. В основном из-за того, что в одном адаптере скапливается множество реализаций класса `ViewHolder`, а также логика их отображения. Если нам понадобится добавить или удалить какой-либо `ViewHolder`, то придётся переписывать класс адаптера и заново его тестировать.
+
+По этой причине в `recyclerview:1.2.0-alpha02` был добавлен новый класс `MergeAdapter`, который в версии `recyclerview:1.2.0-alpha04` переименовали в [`ConcatAdapter`](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter "developer.android.com").
+
+`ConcatAdapter` позволяет отображать содержимое нескольких адаптеров в одном `RecyclerView`. То есть вместо накапливания множества реализаций класса `ViewHolder` в одном адаптере, мы можем создать для каждого `ViewHolder`'а свой адаптер, а потом объединить их все при помощи `ConcatAdapter`. Таким образом код станет более понятным и переиспользуемым, а если потребуется добавить в `RecyclerView` что-то новое - просто создадим новый адаптер.
+
+
+### Использование `ConcatAdapter`. Обзор некоторых методов класса
+
+Передайте в конструктор `ConcatAdapter` все ваши адаптеры, которые нужно объединить, чтобы отображать их в одном `RecyclerView`.
+
+```
+val firstAdapter = FistAdapter()
+val secondAdapter = SecondAdapter()
+val thirdAdapter = ThirdAdapter()
+
+val concatAdapter = ConcatAdapter(firstAdapter, secondAdapter, thirdAdapter)
+recyclerView.adapter = concatAdapter
+```
+
+Адаптеры будут отображаться на экране в том порядке, в котором были переданы в конструктор класса `ConcatAdapter`.
+
+***
+
+Если один из адаптеров должен несколько раз отображаться на экране, то создайте несколько объектов этого адаптера и передайте их все в конструктор класса `ConcatAdapter`.
+
+```
+// Первый адаптер используется дважды
+val firstAdapter = FistAdapter()
+val secondAdapter = SecondAdapter()
+val firstAdapter = FistAdapter()
+
+val concatAdapter = ConcatAdapter(firstAdapter, secondAdapter, firstAdapter)
+recyclerView.adapter = concatAdapter
+```
+
+***
+
+Когда мы вызываем метод `notifyDataSetChanged()` в любом из адаптеров, `ConcatAdapter` тоже его вызывает.
+
+***
+
+У класса `ConcatAdapter` есть конструктор, который позволяет передавать список из адаптеров. На экране они будут отображаться в том порядке, в котором были добавлены в список.
+
+```
+val listOfAdapters = listOf(firstAdapter, secondAdapter, thirdAdapter)
+val concatAdapter = ConcatAdapter(listOfAdapters)
+recyclerView.adapter = concatAdapter
+```
+
+***
+
+Если вам нужно добавить один из адаптеров не сразу, а позже, то используйте метод `addAdapter()`. Этот метод добавляет адаптер в последнюю позицию, т.е. отображаться он будет после всех остальных.
+
+```
+val concatAdapter = ConcatAdapter(firstAdapter, secondAdapter)
+...
+concatAdapter.addAdapter(thirdAdapter)
+```
+
+Если же требуется добавить адаптер не последним, а в определённую позицию, то в метод `addAdapter()` передайте номер позиции и сам адаптер. Метод добавит адаптер в указанную позицию, а все остальные адаптеры сместятся.
+
+```
+val concatAdapter = ConcatAdapter(firstAdapter, secondAdapter)
+...
+concatAdapter.addAdapter(0, thirdAdapter)
+```
+
+Обратите внимание, что номер позиции не может быть больше количества адаптеров (отсчёт начинается с нуля). В примере у нас три адаптера, каждому из которых может быть присвоена позиция **0, 1 или 2**. Если указать число выше, то вылетит ошибка.
+
+***
+
+Для удаления адаптера используется метод `removeAdapter()`.
+
+```
+concatAdapter.removeAdapter(firstAdapter)
+```
+
+***
+
+Чтобы узнать сколько элементов объединил в себе `ConcatAdapter` вызовите метод `itemCount`. Количество элементов суммируется со всех добавленных адаптеров.
+
+```
+concatAdapter.itemCount
+```
+
+***
+
+Можно получить список всех адаптеров, добавленных в `ConcatAdapter`. Для этого вызовите `adapters`, который возвращает `MutableList` со всеми адаптерами.
+
+```
+concatAdapter.adapters
+```
+
+***
+
+Обычно если в адаптере нам надо обратиться к какой-либо позиции, мы используем метод `getAdapterPosition()` класса `ViewHolder`. При работе с `ConcatAdapter` вместо `getAdapterPosition()` следует использовать `getBindingAdapterPosition()`.
+
+
+### Пример с header'ом и footer'ом
+
+Возьмём пример, который был в разделе **ViewType**: требуется отобразить header, footer и список между ними. В таком случае у нас будет три адаптера: для header'а, footer'а и элементов списка. Можно использовать и два адаптера, если логика и внешний вид header'а и footer'а идентичны. Но для наглядности в своём примере я буду использовать три.
+
+Для начала убедитесь, что в **build.gradle** добавлена нужная версия библиотеки **recyclerView**:
+
+```
+implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha04'
+```
+
+Можно использовать и версию `1.2.0-alpha02`, но учтите, что в этой версии `ConcatAdapter` ещё носит название `MergeAdapter`.
+
+Создадим [классы данных](https://bimlibik.github.io/posts/kotlin-data-classes/) для header'а, footer'а и элементов списка (деревья).
+
+```
+data class Header(
+    val title: String,
+    val color: String,
+    val textSize: Float
+)
+
+data class Footer(
+    val title: String,
+    val color: String,
+    val textSize: Float
+)
+
+data class Tree(
+    val name: String,
+    val description: String
+)
+```
+
+Добавим макет для каждого компонента.
+
+```
+// header.xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textAllCaps="true"
+    android:text="Header"
+    android:gravity="center"/>
+
+// footer.xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textAllCaps="true"
+    android:text="Footer"
+    android:gravity="center"/>
+
+// item_tree_simple.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+</LinearLayout>
+```
+
+За отображение header'а будет отвечать `HeaderAdapter`.
+
+```
+class HeaderAdapter(
+    private val header: Header
+) : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
+
+
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeaderViewHolder {
+    val view: View = LayoutInflater.from(parent.context).inflate(R.layout.header, parent, false)
+    return HeaderViewHolder(view)
+  }
+
+  override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
+    holder.bindView(header)
+  }
+
+  override fun getItemCount(): Int = 1
+
+  // ViewHolder
+  class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
+    private val headerView: TextView = itemView.findViewById(R.id.header)
+
+    fun bindView(header: Header) {
+      headerView.text = header.title
+      headerView.setTextColor(Color.parseColor(header.color))
+      headerView.textSize = header.textSize
+    }
+  }
+
+}
+```
+
+Для отображения элементов списка создадим `ListItemAdapter`.
+
+```
+class ListItemAdapter(
+    private val trees: ArrayList<Tree>
+) : RecyclerView.Adapter<ListItemAdapter.ListItemViewHolder>() {
+
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
+    val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_tree_simple, parent, false)
+    return ListItemViewHolder(view)
+  }
+
+  override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
+    val tree = trees[position]
+    holder.bindView(tree)
+  }
+
+  override fun getItemCount(): Int = trees.size
+
+  // ViewHolder
+  class ListItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
+    private val name: TextView = itemView.findViewById(R.id.name)
+    private val description: TextView = itemView.findViewById(R.id.description)
+
+    fun bindView(tree: Tree) {
+      name.text = tree.name
+      description.text = tree.description
+    }
+  }
+
+}
+```
+
+Ну и наконец адаптер для отображения footer'а.
+
+```
+class FooterAdapter(
+    private val footer: Footer
+) : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {
+
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FooterViewHolder {
+    val view: View = LayoutInflater.from(parent.context).inflate(R.layout.footer, parent, false)
+    return FooterViewHolder(view)
+  }
+
+  override fun onBindViewHolder(holder: FooterViewHolder, position: Int) {
+    holder.bindView(footer)
+  }
+
+  override fun getItemCount(): Int = 1
+
+  // ViewHolder
+  class FooterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
+    private val footerView: TextView = itemView.findViewById(R.id.footer)
+
+    fun bindView(footer: Footer) {
+      footerView.text = footer.title
+      footerView.setTextColor(Color.parseColor(footer.color))
+      footerView.textSize = footer.textSize
+    }
+  }
+
+}
+```
+
+Теперь осталось лишь объединить всё вместе в методе `onCreate()` - для активити или в методе `onViewCreated()` - для фрагмента. Для этого создадим по одному объекту каждого из адаптеров и передадим их классу `ConcatAdapter()` в том порядке, в котором они должны быть отражены на экране.
+
+```
+val headerAdapter = HeaderAdapter(Header("Я - header!", "#283593", 25F))
+val treesAdapter = ListItemAdapter(createData())
+val footerAdapter = FooterAdapter(Footer("Я - footer!", "#6A1B9A", 25F))
+
+val concatAdapter = ConcatAdapter(headerAdapter, treesAdapter, footerAdapter)
+recycler_view.adapter = concatAdapter
+```
+
+Результат:
+
+<img src="/assets/img/posts/android-recycler-view/concat-adapter-header-item-footer.png" alt="demo concat adapter" height="550"/>
+
+Если же в `ConcatAdapter()` передать footer сразу после header'а
+
+```
+val concatAdapter = ConcatAdapter(headerAdapter, footerAdapter, treesAdapter)
+recycler_view.adapter = concatAdapter
+```
+
+то результат будет таким:
+
+<img src="/assets/img/posts/android-recycler-view/concat-adapter-header-footer-item.png" alt="demo concat adapter" height="550"/>
+
+
 ***
 
 ## Полезные ссылки
@@ -822,9 +1132,16 @@ notifyDataSetChanged()
 **Общие ссылки по теме:**  
 [Create a List with RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview "developer.android.com") - гайд из официальной документации.  
 [RecyclerView](https://developer.android.com/reference/kotlin/androidx/recyclerview/widget/package-summary "developer.android.com") - документация по классу (androidx).  
+[Recyclerview - Release Notes](https://developer.android.com/jetpack/androidx/releases/recyclerview "developer.android.com") - информация о выходе новых версий.  
 [Using the RecyclerView](https://guides.codepath.com/android/using-the-recyclerview "guides.codepath.com") - гайд от codepath.
 
 **Кастомизация:**  
 [Having multiple lists in a single RecyclerView](https://github.com/masudias/dynamic-recyclerview/wiki "github.com") - гайд по использованию нескольких списков в одном `RecyclerView`.
 
-[Код из примеров](https://github.com/Bimlibik/Examples/tree/master/RecyclerView "github.com").
+**Адаптеры:**  
+[ConcatAdapter](https://developer.android.com/reference/kotlin/androidx/recyclerview/widget/ConcatAdapter "developer.android.com") - официальная документация.  
+
+**Код:**  
+[RecyclerView](https://github.com/Bimlibik/Examples/tree/master/RecyclerView "github.com") - полный код всех примеров из данной статьи.  
+[MergeAdapter-sample](https://github.com/Kotlin-Android-Open-Source/MergeAdapter-sample/tree/master/app/src/main/java/com/hoc/mergeadapter_sample "github.com") - пример реализации `ConcatAdapter` от **Kotlin Android Open Source**.  
+[Concat Adapter Android Example](https://github.com/MindorksOpenSource/ConcatAdapter-Android-Example "github.com") - пример реализации `ConcatAdapter` от **Mindorks**.  
