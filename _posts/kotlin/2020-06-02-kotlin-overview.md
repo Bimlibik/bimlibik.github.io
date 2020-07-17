@@ -64,6 +64,7 @@ Studio, можно использовать при разработке на Kot
 [Изолированные классы (sealed classes)](https://bimlibik.github.io/posts/kotlin-sealed-classes/). <br>
 [Основной и вторичный конструкторы. Init блок](https://bimlibik.github.io/posts/kotlin-constructors-and-init-block/). <br>
 [Абстрактные классы и интерфейсы](https://bimlibik.github.io/posts/kotlin-abstract-classes-and-interfaces/). <br>
+[Ключевое слово object](https://bimlibik.github.io/posts/kotlin-object-keyword/). <br>
 
 ***
 
