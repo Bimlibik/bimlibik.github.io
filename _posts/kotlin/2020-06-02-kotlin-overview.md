@@ -52,6 +52,7 @@ Studio, можно использовать при разработке на Kot
 [Модификаторы доступа](https://bimlibik.github.io/posts/kotlin-visibility-modifiers/). <br>
 [Модификатор const](https://bimlibik.github.io/posts/kotlin-const-modifier/). <br>
 [Отложенная и ленивая инициализация свойств](https://bimlibik.github.io/posts/kotlin-lateinit-and-lazy/). <br>
+[Лямбда-выражения и анонимные функции](https://bimlibik.github.io/posts/kotlin-lambdas-expressions-and-anonymous-functions). <br>
 [Функции области видимости (Scope Functions)](https://bimlibik.github.io/posts/kotlin-scope-functions/). <br>
 
 
