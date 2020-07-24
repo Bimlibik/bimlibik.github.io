@@ -34,7 +34,7 @@ toc: false
 - [Манифест приложения](https://bimlibik.github.io/posts/manifest-file/)
 - Компоненты приложения
     - [Activity, Lifecycle](https://bimlibik.github.io/posts/manifest-file/android-activity)
-    - [Tasks and Backstack]()
+    - [Tasks and Backstack](https://bimlibik.github.io/posts/tasks-and-back-stack)
     - [Broadcast Receiver]()
     - [Service]()
     - [Intent]()
