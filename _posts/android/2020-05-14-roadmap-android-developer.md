@@ -33,7 +33,7 @@ toc: false
 - [Архитектура платформы Android](http://bimlibik.github.io/posts/how-does-android-work/)
 - [Манифест приложения](https://bimlibik.github.io/posts/manifest-file/)
 - Компоненты приложения
-    - [Activity, Lifecycle](https://bimlibik.github.io/posts/manifest-file/android-activity)
+    - [Activity, Lifecycle](https://bimlibik.github.io/posts/android-activity)
     - [Tasks and Backstack](https://bimlibik.github.io/posts/tasks-and-back-stack)
     - [Broadcast Receiver](https://bimlibik.github.io/posts/broadcasts/)
     - [Service]()
