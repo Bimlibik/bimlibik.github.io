@@ -35,7 +35,7 @@ toc: false
 - Компоненты приложения
     - [Activity, Lifecycle](https://bimlibik.github.io/posts/manifest-file/android-activity)
     - [Tasks and Backstack](https://bimlibik.github.io/posts/tasks-and-back-stack)
-    - [Broadcast Receiver]()
+    - [Broadcast Receiver](https://bimlibik.github.io/posts/broadcasts/)
     - [Service]()
     - [Intent]()
 - User Interface
