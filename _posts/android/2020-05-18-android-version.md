@@ -15,6 +15,7 @@ tags: [android, history]
 
 ***
 
+<img src="/assets/img/posts/android-version/android-a.png" alt="android-a" height="300"/>
 
 ## Android 1.0
 
@@ -35,6 +36,9 @@ API: 1.
 - Уведомления. Отображались в строке состояния, при этом уже можно было установить
   тип оповещения для уведомлений. -->
 
+***
+
+<img src="/assets/img/posts/android-version/android-b.png" alt="android-b" height="300"/>
 
 ## Android 1.1
 
@@ -47,6 +51,9 @@ API: 2.
   Добавлены кнопки "скрыть" и "показать" для панели набора номера.
 - Вложения, полученые через MMS, можно сохранить. -->
 
+***
+
+<img src="/assets/img/posts/android-version/android-c.png" alt="android-c" height="300"/>
 
 ## Android 1.5 Cupcake
 
@@ -67,12 +74,18 @@ API: 3.
   дата и время вызова, открытие карточки контакта в одно касание из истории звонков).
 - Анимация при переходе от одного экрана к другому. -->
 
+***
+
+<img src="/assets/img/posts/android-version/android-d.png" alt="android-d" height="300"/>
 
 ## Android 1.6 Donut
 
 Дата выхода: 15.09.2009.  
 API: 4.
 
+***
+
+<img src="/assets/img/posts/android-version/android-e.png" alt="android-e" height="300"/>
 
 ## Android 2.0 / 2.1 Eclair
 
@@ -80,30 +93,45 @@ API: 4.
 Дата выхода версии 2.1: 12.01.2010.  
 API: 5, 6, 7.
 
+***
+
+<img src="/assets/img/posts/android-version/android-f.png" alt="android-f" height="300"/>
 
 ## Android 2.2 Froyo
 
 Дата выхода: 12.05.2010.  
 API: 8.
 
+***
+
+<img src="/assets/img/posts/android-version/android-g.png" alt="android-g" height="300"/>
 
 ## Android 2.3 Gingerbread
 
 Дата выхода: 06.12.2010.  
 API: 9, 10.
 
+***
+
+<img src="/assets/img/posts/android-version/android-h.png" alt="android-h" height="300"/>
 
 ## Android 3.0 / 3.1 / 3.2 Honeycomb
 
 Дата выхода: 22.02.2011.  
 API: 11, 12, 13.
 
+***
+
+<img src="/assets/img/posts/android-version/android-i.png" alt="android-i" height="300"/>
 
 ## Android 4.0 Ice Cream Sandwich
 
 Дата выхода: 19.10.2011.  
 API: 14, 15.
 
+***
+
+<img src="/assets/img/posts/android-version/android-j.png" alt="android-j" height="300"/>
 
 ## Android 4.1 / 4.2 / 4.3 Jelly Bean
 
@@ -112,6 +140,9 @@ API: 14, 15.
 Дата выхода версии 4.3: 24 июля 2013.  
 API: 16, 17, 18.
 
+***
+
+<img src="/assets/img/posts/android-version/android-k.png" alt="android-k" height="300"/>
 
 ## Android 4.4 KitKat
 
@@ -122,6 +153,9 @@ API: 16, 17, 18.
 Дата выхода версии 4.4.4: 20 июня 2014.  
 API: 19, 20.
 
+***
+
+<img src="/assets/img/posts/android-version/android-l.png" alt="android-l" height="300"/>
 
 ## Android 5.0 / 5.1 Lollipop
 
@@ -132,30 +166,45 @@ API: 19, 20.
 Дата выхода версии 5.1.1: 21 марта 2015.  
 API: 21, 22.
 
+***
+
+<img src="/assets/img/posts/android-version/android-m.png" alt="android-m" height="300"/>
 
 ## Android 6.0 Marshmallow
 
 Дата выхода: 28 мая 2015.  
 API: 23.
 
+***
+
+<img src="/assets/img/posts/android-version/android-n.png" alt="android-n" height="300"/>
 
 ## Android 7.0 / 7.1 Nougat
 
 Дата выхода: 22 августа 2016.  
 API: 24, 25.
 
+***
+
+<img src="/assets/img/posts/android-version/android-o.png" alt="android-o" height="300"/>
 
 ## Android 8.0 / 8.1 Oreo
 
 Дата выхода: 21 августа 2017.  
 API: 26, 27.
 
+***
+
+<img src="/assets/img/posts/android-version/android-p.png" alt="android-p" height="300"/>
 
 ## Android 9.0 Pie
 
 Дата выхода: 6 августа 2018.  
 API: 28.
 
+***
+
+<img src="/assets/img/posts/android-version/android-10.png" alt="android-10" height="300"/>
 
 ## Android 10 Quince Tart
 
@@ -165,7 +214,7 @@ API: 29.
 
 ***
 
-<img src="/assets/img/posts/android-version/android-11.png" alt="demo header" height="300"/>
+<img src="/assets/img/posts/android-version/android-11.png" alt="android-11" height="300"/>
 
 ## Android 11 Red Velvet Cake
 
