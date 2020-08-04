@@ -54,6 +54,7 @@ Studio, можно использовать при разработке на Kot
 [Отложенная и ленивая инициализация свойств](https://bimlibik.github.io/posts/kotlin-lateinit-and-lazy/). <br>
 [Лямбда-выражения и анонимные функции](https://bimlibik.github.io/posts/kotlin-lambdas-expressions-and-anonymous-functions). <br>
 [Функции области видимости (Scope Functions)](https://bimlibik.github.io/posts/kotlin-scope-functions/). <br>
+[Перегрузка операторов](https://bimlibik.github.io/posts/kotlin-operator-overloading/). <br>
 
 
 ### Классы и объекты
