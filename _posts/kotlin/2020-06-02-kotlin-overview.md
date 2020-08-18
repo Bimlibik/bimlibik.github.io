@@ -38,8 +38,9 @@ Studio, можно использовать при разработке на Kot
 
 ## Релизы
 
-На данный момент последняя версия Kotlin вышла 3 марта 2020 года - 1.3.70.
-[Подробнее](https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/ "blog.jetbrains.com").
+На данный момент последняя версия Kotlin вышла 17 августа 2020 года - 1.4.0. [Подробнее](https://blog.jetbrains.com/ru/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
+
+Версия 1.3.70, дата выхода - 3 марта 2020 года. [Подробнее](https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/ "blog.jetbrains.com").
 
 ***
 
