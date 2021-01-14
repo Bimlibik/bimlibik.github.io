@@ -78,3 +78,5 @@ Studio, можно использовать при разработке на Kot
 [Неофициальный сайт](https://kotlinlang.ru/ "kotlinlang.ru") с частичным переводом документации на русский язык.
 
 [Kotlin blog](https://blog.jetbrains.com/kotlin/ "blog.jetbrains.com").
+
+[Kotlin Christmas](https://kotlin.christmas/2020 "kotlin.christmas") - ресурс, где вы найдете множество интересных статей по Kotlin, библиотеках, фреймворках и лучших практик.
