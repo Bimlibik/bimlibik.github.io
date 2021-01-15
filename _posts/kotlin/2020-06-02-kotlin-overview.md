@@ -69,6 +69,11 @@ Studio, можно использовать при разработке на Kot
 [Абстрактные классы и интерфейсы](https://bimlibik.github.io/posts/kotlin-abstract-classes-and-interfaces/). <br>
 [Ключевое слово object](https://bimlibik.github.io/posts/kotlin-object-keyword/). <br>
 
+
+### Библиотеки
+
+[Нюансы при использовании библиотеки Gson](https://bimlibik.github.io/posts/kotlin-gson/)
+
 ***
 
 ## Полезные ссылки
