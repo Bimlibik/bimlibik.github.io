@@ -203,6 +203,26 @@ println(person.copy(age = 28))
 Person(name=Adam, age=28)
 ```
 
+Можно реализовать самостоятельно следующим образом:
+
+```
+class Person(val name: String , val age: Int) {
+
+  override fun toString() = "Person(name = $name , age = $age)"
+
+  fun copy(name: String = this.name, age: Int = this.age) = Person(name, age)
+  
+}
+
+...
+
+val person = Person("Adam", 27)
+println(person.copy(age = 28))
+
+// Выведется в лог
+Person(name=Adam, age=28)
+```
+
 ***
 
 ## Мультидекларации
