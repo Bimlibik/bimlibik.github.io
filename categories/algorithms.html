@@ -1,0 +1,5 @@
+---
+layout: category
+title: Algorithms
+category: Algorithms
+---
