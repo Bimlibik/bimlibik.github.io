@@ -249,6 +249,19 @@ API: 28.
 
 ***
 
+<img src="/assets/img/posts/android-version/android-12.svg" alt="android 12 logo" height="300"/>
+
+## Android 12
+
+**Дата выхода:** выпущена предварительная версия для разработчиков 18 февраля 2021 года.
+
+- Улучшен внешний вид уведомлений.
+- Поддержка устройств со сгруглёнными углами.
+- Новые API для работы с контентом, визуальными эффектами.
+- Возможность пробуждать приложение, когда поблизости находится устройство-компаньон (часы или браслет).
+
+[Подробнее][android-12-bimlibik].
+
 <!-- Ссылки -->
 
 <!-- Android 10 -->
@@ -257,4 +270,7 @@ API: 28.
 <!-- Android 11 -->
 [android-11-conversations]: https://developer.android.com/preview/features/conversations "developer.android.com"
 [android-11-bublles]: https://developer.android.com/guide/topics/ui/bubbles "developer.android.com"
-[android-11-bimlibik]: /posts/android-11/
+[android-11-bimlibik]: /posts/android-11/ "bimlibik.github.io"
+
+<!-- Android 12 -->
+[android-12-bimlibik]: /posts/android-12/ "bimlibik.github.io"
