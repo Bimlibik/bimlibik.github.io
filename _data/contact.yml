@@ -6,6 +6,7 @@
 -
   type: telegram
   icon: 'fab fa-telegram'
+  url: 'tg://resolve?domain=leslie_m'
 # -
 #   type: twitter
 #   icon: 'fab fa-twitter'
