@@ -1,0 +1,100 @@
+// dark
+--link-color: rgb(42, 142, 102);
+--link-underline-color: rgb(61, 115, 85);
+--btn-active-bg: rgba(42, 142, 85, 1);
+--btn-active-border-color: rgb(36, 214, 113);
+--toc-highlight: rgb(116, 243, 158);
+--footnote-target-bg: rgb(63, 181, 118);
+
+// light
+--link-color: #2a8e66;
+--sidebar-bg: radial-gradient(
+    circle,
+    rgba(30, 107, 61, 1) 0%,
+    rgba(35, 37, 46, 1) 100%);
+--btn-active-bg: #2a8e55;
+--btn-active-border-color: #24d671;
+
+// Posts
+.post-navigation {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+
+  .btn {
+    @include btn-post-nav;
+
+    color: var(--link-color);
+
+    &:hover {
+      background: #2a8e55;
+      color: #fff;
+      border-color: #2a8e55;
+      &::before {
+        color: #fff;
+      }
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem #91ffc0;
+        // border-color: #2a8e55 !important;
+        // box-shadow: none !important;
+    }
+
+    // &:active:focus {
+    //   box-shadow: 0 0 0 .2rem #2a8e55;
+    // }
+
+    &.disabled {
+      @include btn-post-nav;
+      pointer-events: auto;
+      cursor: not-allowed;
+      background: none;
+      color: gray;
+
+      &:hover {
+        border-color: none;
+      }
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      background-color: #46a46e;
+
+      &:focus {
+        box-shadow: 0 0 0 .2rem #91ffc0;
+      }
+    }
+
+    &.btn-outline-primary.disabled:focus {
+      box-shadow: none;
+    }
+
+    &::before {
+      color: var(--text-muted-color);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      content: attr(prompt);
+    }
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      left: 0.5px;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      right: 0.5px;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    margin-top: 0.3rem;
+    white-space: normal;
+  }
+
+} // .post-navigation

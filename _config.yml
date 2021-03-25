@@ -1,12 +1,18 @@
-# The Site Settings
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2017-2019 Cotes Chung
-# MIT licensed
 
+# The Site Configuration
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-#--------------------------
+# Import the theme
+theme: jekyll-theme-chirpy
+
+# Only if your site type is GitHub Project sites and doesn't have a custom domain,
+# change below value to '/projectname'.
+baseurl: ''
+
+# the HTML language tag › https://www.w3.org/International/questions/qa-choosing-language-tags
+lang: ru-RU
+
+# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
+timezone: Asia/Irkutsk
 
 title: Factis                          # the main title
 
@@ -18,10 +24,6 @@ description: >-                        # used by seo meta and the atom feed
 
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'http://bimlibik.github.io'
-
-author: Leslie M.                  # change to your full name
-
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
   username: Bimlibik             # change to your github username
@@ -47,12 +49,6 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 #--------------------------
 
-# if your site type is Project Pages site, change below value to '/projectname'
-baseurl: ''
-
-# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Irkutsk
-
 google_analytics:
   # Fill with your Google Analytics ID
   id: 'UA-159618579-2'
@@ -66,36 +62,44 @@ google_analytics:
     proxy_endpoint: ''
     cache: false  # pv data local cache, good for the users from GFW area.
 
-disqus:
-  comments: true  # boolean type, the global switch for posts comments.
-  shortname: 'bimlibik'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-
-
-# Prefer color scheme setting, available values:
+# Prefer color scheme setting.
 #
-#     dual   - Follow the system prefer color by default, and a toggle will display
-#              in the left bottom of Sidebar, which used for switch the theme between dark and light.
+# Note: Keep empty will follow the system prefer color by default,
+# and there will be a toggle to switch the theme between dark and light
+# on the bottom left of the sidebar.
+#
+# Available options:
 #
 #     light  - Use the light color scheme
-#
 #     dark   - Use the dark color scheme
 #
-theme_mode: dual
+theme_mode: 
+
+# The CDN endpoint for images.
+# Notice that once it is assigned, the CDN url
+# will be added to all image (site avatar & posts' images) paths starting with '/'
+#
+# e.g. 'https://cdn.com'
+img_cdn: ''
+
+# the avatar on sidebar, support local or CORS resources
+avatar: /assets/img/sample/avatar.jpg
 
 # boolean type, global switch for ToC in posts.
 toc: true
 
+disqus:
+  comments: true  # boolean type, the global switch for posts comments.
+  shortname: 'bimlibik'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+
 paginate: 10
 
-markdown: kramdown
-
-highlighter: rouge
+# ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
-  input: GFM
   syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
-    css_class: 'highlight'
+  syntax_highlighter_opts:   # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: highlight
     # default_lang: console
     span:
       line_numbers: false
@@ -103,22 +107,24 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+# DO NOT change this unless you're a Pro user on Jekyll and Web development,
+# Or you think you're smart enough to change other relevant URLs within this template.
 permalink: /posts/:title/
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
 
 defaults:
   -
     scope:
-      path: ""          # An empty string here means all files in the project
+      path: ''          # An empty string here means all files in the project
       type: posts
     values:
       layout: post
       comments: true    # Enable comments in posts.
       toc: true         # Display TOC column in posts.
-      location: Post
-      breadcrumb:
-        -
-          label: Статьи
-          url: /
   -
     scope:
       path: _drafts
@@ -126,81 +132,45 @@ defaults:
       comments: false
   -
     scope:
-      path: tags
-    values:
-      tab_active: Tags
-      location: Tag
-      breadcrumb:
-        -
-          label: Главная
-          url: /
-        -
-          label: Теги
-          url: /tabs/tags/
-  -
-    scope:
-      path: categories
-    values:
-      tab_active: Categories
-      location: Category
-      breadcrumb:
-        -
-          label: Главная
-          url: /
-        -
-          label: Категории
-          url: /tabs/categories/
-  -
-    scope:
-      path: tabs
+      path: ''
+      type: tabs             # see `site.collections`
     values:
       layout: page
+      permalink: /:title/
       dynamic_title: true    # Hide title in mobile screens.
-      breadcrumb:
-        -
-          label: Главная
-          url: /
-  -
-    scope:
-      path: assets/data
-    values:
-      layout: compress
-
 
 sass:
-  sass_dir: /assets/css
   style: compressed
 
 compress_html:
   clippings: all
-  comments: ["<!-- ", " -->"]
-  endings: [html, head, body, dt, dd, rt, rp,
-            optgroup, option, colgroup, caption,
-            thead, tbody, tfoot, tr, td, th]
+  comments: all
+  endings: all
   profile: false
   blanklines: false
   ignore:
-    envs: []
+    envs: [development]
 
 exclude:
-  - vendor        # Avoid Jekyll mistakenly read the vender directory on Travis-CI's VM .
-  - Gemfile.lock
+  - vendor
   - Gemfile
+  - Gemfile.lock
+  - '*.gem'
+  - '*.gemspec'
   - tools
   - docs
   - README.md
+  - LICENSE
+  - gulpfile.js
+  - node_modules
+  - package.json
+  - package-lock.json
 
-sitemap_exclude:  # Sitemap will exclude the following items.
-  fuzzy:
-    - /assets/
-  accurate:
-    - /norobots/
-    - /tabs/
-    - /categories/
-    - /tags/
-    - /posts/
-    - 404.html
-    - feed.xml
-    - sitemap.xml
-    - robots.txt
-    - redirects.json
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/

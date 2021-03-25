@@ -1,5 +1,0 @@
----
-layout: category
-title: Git
-category: Git
----

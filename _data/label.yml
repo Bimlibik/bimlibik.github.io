@@ -12,8 +12,13 @@ panel:
 
 post:
   relate_posts: "Недавно просмотренное"
+  share: Поделиться
   button:
     next: Следующая статья
     previous: Предыдущая статья
 
 search_hint: "Поиск"   # text show on search bar
+
+pin_prompt: Pinned    # pinned prompt
+
+read_time_unit: мин.   # see posts' time to read
