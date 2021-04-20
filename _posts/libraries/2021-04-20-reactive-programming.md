@@ -317,9 +317,33 @@ Marble диаграммы - визуально передают то, что п�
 - `RxKotlin` - это обёртка RxJava на языке Kotlin, с более лаконичными решениями, которые позволяют сократить количество кода. Может быть использована самостоятельно, без дополнительных зависимостей в виде RxJava, но RxAndroid при необходимости придётся подключить.
 - `RxBinding` - библиотека, которая осуществляет привязку View и тем самым превращает View в источник данных.
 
-<!-- `Retrofit` поддерживает библиотеку `RxJava`:
-- Вместо использования обёртки `Callback`, можно использовать `Observable`.
-- Комбинирование нескольких запросов вместе. -->
+***
+
+## Rx vs Retrofit
+
+`Retrofit` поддерживает библиотеку `RxJava`, благодаря чему открываются некоторые возможности::
+- Вместо использования `Callback` в ApiInterface можно использовать `Observable`.
+
+  ```
+  @GET("pictures")
+  fun getPictures(
+      @Query("query") query: String,
+  ): Observable<PictureResponse>
+  ```
+
+  Но в таком случае потребуется адаптировать Rx типы под Retrofit. Осуществляется с помощью специального [адаптера][adapter-rxjava], созданного разработчиками Retrofit. Его необходимо добавить в зависимости, после чего достаточно дописать одну строчку кода при создании API клиента:
+
+  ```
+  retrofit = Retrofit.Builder()
+    .baseUrl(BASE_URL)
+    .addConverterFactory(...)
+    .addCallAdapterFactory(RxJava3CallAdapterFactory.create()) // адаптер для Rx
+    .build()
+  ```
+
+  Так же есть ещё одна [библиотека][adapter-akarnokd] с адаптером, но только для RxJava3. Принцип работы аналогичный.
+
+- Комбинирование нескольких запросов вместе.
 
 ***
 
@@ -342,7 +366,15 @@ Marble диаграммы - визуально передают то, что п�
 [RxJava - Transformation, Filter (часть 2)](https://www.youtube.com/watch?v=Z0vB_TlvJJ4)  
 [RxJava - Combination, Utility, Binding (часть 3)](https://www.youtube.com/watch?v=6DOPxgqgzkk)
 
-***
+**Примеры приложений:**
+
+[MVVM with Hilt, RxJava 3, Retrofit, Room, Live Data and View Binding](https://medium.com/swlh/mvvm-with-hilt-rxjava-3-retrofit-room-live-data-and-view-binding-8da9bb1004bf) - пример на Java.  
+[How to make complex requests simple with RxJava in Kotlin](https://medium.com/mindorks/how-to-make-complex-requests-simple-with-rxjava-in-kotlin-ccec004c5d10) - пример на Kotlin.
+
+
+
+
+
 
 [reactivex]: http://reactivex.io/
 [operators]: http://reactivex.io/documentation/operators.html
@@ -351,3 +383,5 @@ Marble диаграммы - визуально передают то, что п�
 [backpressure-github]: https://github.com/ReactiveX/RxJava/wiki/Backpressure-(2.0)
 [backpressure-bimlibik]: https://bimlibik.github.io/posts/reactive-programming/#backpressure
 [froussios]: https://github.com/Froussios/Intro-To-RxJava
+[adapter-rxjava]: https://github.com/square/retrofit/tree/master/retrofit-adapters
+[adapter-akarnokd]: https://github.com/akarnokd/RxJavaRetrofitAdapter
