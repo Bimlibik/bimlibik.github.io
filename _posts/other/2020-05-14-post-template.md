@@ -1,6 +1,6 @@
 ---
 title: Шаблон статьи, синтаксис Markdown
-author: Leslie M.
+author: Bimlibik
 date: 2020-05-14 16:20:00 +0800
 categories: [Markdown, Template]
 tags: [template, typography, markdown]
@@ -27,7 +27,7 @@ tags: [тэги]     # Названия тегов обязательно дол
 ```
 
 `+/-TTTT` - это отклонение от UTC. Посмотреть для своего региона можно
-[здесь](https://dateandtime.info/ru/country.php?code=RU).
+[здесь][dateandtime].
 
 У каждой статьи может быть две категории: главная (указывается первой) и подкатегория
 (соответственно вторая). Количество тегов не ограничено. Для того, чтобы при нажатии
@@ -114,6 +114,27 @@ TOC расшифровывается как **T**able **o**f **C**ontents.
 
 ## Плагины
 
-Для написания статей я использую [Atom](https://atom.io/). Плагины, которые мне
+Для написания статей я использую [Atom][atom]. Плагины, которые мне
 в этом помогают (список возможно будет пополняться):
-- [Toolbar for Markdown-Writer](https://atom.io/packages/tool-bar-markdown-writer).
+- [Toolbar for Markdown-Writer][plugin-tool-bar-markdown-writer].
+
+
+## Команды баш
+
+Для обновления гемов:
+
+```
+$ bundle install
+```
+
+Для локального запуска:
+
+```
+$ bundle exec jekyll s
+```
+
+
+<!-- Ссылки на сторонние ресурсы -->
+[dateandtime]: https://dateandtime.info/ru/country.php?code=RU "dateandtime.info"
+[atom]: https://atom.io/ "atom.io"
+[plugin-tool-bar-markdown-writer]: https://atom.io/packages/tool-bar-markdown-writer "atom.io"
