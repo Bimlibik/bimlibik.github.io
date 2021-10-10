@@ -1,6 +1,6 @@
 ---
 title: "Kotlin. Коллекции"
-author: Leslie M.
+author: Bimlibik
 date: "2021-10-09 22:40"
 categories: [Kotlin, Collections]
 tags: [kotlin, theory, collections, kotlin collections]
@@ -250,12 +250,14 @@ Kotlin предоставляет просто огромный набор ра�
 
 [Collections overview][doc-collections-eng] - общий обзор из официальной документации по коллекциям в Kotlin. Там же есть более подробные статьи на эту тему.  
 [Коллекции. Общий обзор][doc-collections-ru] - неофициальный перевод документации на русский язык.  
+[Learn Kotlin by Example][doc-collections-by-example-eng] - помощь в разборе коллекций и их функций на примерах (на английском).  
 [Sequence][klimov-sequence] - статья от Александра Климова про последовательности.  
 [Коллекции. List (Списки)][klimov-list-collections] - статья от Александра Климова, обзор основных функций коллекций.  
 [Set (Множество)][klimov-set] - статья от Александра Климова про множества.  
 [Map][klimov-map] - статья от Александра Климова про ассоциативные списки.  
 
 [doc-collections-eng]: https://kotlinlang.org/docs/collections-overview.html "kotlinlang.org"
+[doc-collections-by-example-eng]: https://play.kotlinlang.org/byExample/05_Collections/01_List "play.kotlinlang.org"
 [doc-collections-ru]: https://kotlinlang.ru/docs/reference/collections-overview.html "kotlinlang.ru"
 [klimov-sequence]: http://developer.alexanderklimov.ru/android/kotlin/sequence.php "developer.alexanderklimov.ru"
 [klimov-set]: http://developer.alexanderklimov.ru/android/kotlin/set.php "developer.alexanderklimov.ru"

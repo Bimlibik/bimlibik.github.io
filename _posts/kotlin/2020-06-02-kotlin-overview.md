@@ -1,6 +1,6 @@
 ---
 title: Kotlin. Общий обзор
-author: Leslie M.
+author: Bimlibik
 date: "2020-06-02 01:40:00 +0800"
 categories: [Kotlin, Basics]
 tags: [kotlin, theory, basics]
@@ -38,9 +38,19 @@ Studio, можно использовать при разработке на Kot
 
 ## Релизы
 
-На данный момент последняя версия Kotlin вышла 17 августа 2020 года - 1.4.0. [Подробнее](https://blog.jetbrains.com/ru/kotlin/2020/08/kotlin-1-4-released-with-a-focus-on-quality-and-performance/).
+На данный момент последняя версия Kotlin вышла 24 августа 2021 года - 1.5.30. [Подробнее][kotlin-1.5.30].
 
-Версия 1.3.70, дата выхода - 3 марта 2020 года. [Подробнее](https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/ "blog.jetbrains.com").
+Версия 1.5.20, дата выхода - 24 июня 2021 года. [Подробнее][kotlin-1.5.20]
+
+Версия 1.5.0, дата выхода - 5 мая 2021 года. [Подробнее][kotlin-1.5.0]
+
+Версия 1.4.30, дата выхода - 3 февраля 2021 года. [Подробнее][kotlin-1.4.30]
+
+Версия 1.4.20, дата выхода - 23 ноября 2020 года. [Подробнее][kotlin-1.4.20]
+
+Версия 1.4.0, дата выхода - 17 августа 2020 года. [Подробнее][kotlin-1.4.0]
+
+Версия 1.3.70, дата выхода - 3 марта 2020 года. [Подробнее][kotlin-1.3.70-blog].
 
 ***
 
@@ -48,40 +58,78 @@ Studio, можно использовать при разработке на Kot
 
 В данном разделе будут ссылки на мои статьи о Kotlin.
 
-[Основной синтаксис](https://bimlibik.github.io/posts/kotlin-basic-syntax/). <br>
-[Null-безопасность. Операторы "?.", "!!.", "?:"](https://bimlibik.github.io/posts/kotlin-null-safety/). <br>
-[Модификаторы доступа](https://bimlibik.github.io/posts/kotlin-visibility-modifiers/). <br>
-[Модификатор const](https://bimlibik.github.io/posts/kotlin-const-modifier/). <br>
-[Отложенная и ленивая инициализация свойств](https://bimlibik.github.io/posts/kotlin-lateinit-and-lazy/). <br>
-[Лямбда-выражения и анонимные функции](https://bimlibik.github.io/posts/kotlin-lambdas-expressions-and-anonymous-functions). <br>
-[Функции области видимости (Scope Functions)](https://bimlibik.github.io/posts/kotlin-scope-functions/). <br>
-[Перегрузка операторов](https://bimlibik.github.io/posts/kotlin-operator-overloading/). <br>
+[Основной синтаксис][bimlibik-basic-syntax].  
+[Null-безопасность. Операторы "?.", "!!.", "?:"][bimlibik-null-safety].  
+[Модификаторы доступа][bimlibik-visibility-modifiers].  
+[Модификатор const][bimlibik-const-modifier].  
+[Отложенная и ленивая инициализация свойств][bimlibik-lateinit-and-lazy].  
+[Лямбда-выражения и анонимные функции][bimlibik-lambdas-expressions-and-anonymous-functions].  
+[Функции области видимости (Scope Functions)][bimlibik-scope-functions].  
+[Перегрузка операторов][bimlibik-operator-overloading].  
+[Коллекции][bimlibik-collections].
 
 
 ### Классы и объекты
 
-[Ключевое слово open](https://bimlibik.github.io/posts/kotlin-open-keyword/). <br>
-[Классы данных (Data classes)](https://bimlibik.github.io/posts/kotlin-data-classes/). <br>
-[Вложенные и внутренние классы](https://bimlibik.github.io/posts/kotlin-nested-and-inner-clesses/). <br>
-[Классы перечислений (enum)](https://bimlibik.github.io/posts/kotlin-enum-classes/). <br>
-[Изолированные классы (sealed classes)](https://bimlibik.github.io/posts/kotlin-sealed-classes/). <br>
-[Основной и вторичный конструкторы. Init блок](https://bimlibik.github.io/posts/kotlin-constructors-and-init-block/). <br>
-[Абстрактные классы и интерфейсы](https://bimlibik.github.io/posts/kotlin-abstract-classes-and-interfaces/). <br>
-[Ключевое слово object](https://bimlibik.github.io/posts/kotlin-object-keyword/). <br>
+[Ключевое слово open][bimlibik-open-keyword].  
+[Классы данных (Data classes)][bimlibik-data-classes].  
+[Вложенные и внутренние классы][bimlibik-nested-and-inner-clesses].  
+[Классы перечислений (enum)][bimlibik-enum-classes].  
+[Изолированные классы (sealed classes)][bimlibik-sealed-classes].  
+[Основной и вторичный конструкторы. Init блок][bimlibik-constructors-and-init-block].  
+[Абстрактные классы и интерфейсы][bimlibik-abstract-classes-and-interfaces].  
+[Ключевое слово object][bimlibik-object-keyword].  
 
 
 ### Библиотеки
 
-[Нюансы при использовании библиотеки Gson](https://bimlibik.github.io/posts/kotlin-gson/)
+[Нюансы при использовании библиотеки Gson][bimlibik-gson].
 
 ***
 
 ## Полезные ссылки
 
-[Официальная документация](https://kotlinlang.org/docs/reference/ "kotlinlang.org").
+[Официальная документация][doc-kotlin-official-eng] - на английском языке.  
+[Learn Kotlin by Example][doc-learn-by-example-eng] - изучай Kotlin на примерах. Понятно и коротко объясняются основные фичи Котлина с такими же доступными примерами, которые можно здесь же запустить и посмотреть результат выполнения.  
+[Неофициальный сайт][doc-kotlin-ru] с частичным переводом документации на русский язык.  
+[Kotlin blog][kotlin-blog-official-eng].  
+[Kotlin Christmas][kotlin-christmas] - ресурс, где вы найдете множество интересных статей по Kotlin, библиотеках, фреймворках и лучших практик.  
 
-[Неофициальный сайт](https://kotlinlang.ru/ "kotlinlang.ru") с частичным переводом документации на русский язык.
 
-[Kotlin blog](https://blog.jetbrains.com/kotlin/ "blog.jetbrains.com").
+<!-- Ссылки на сторонние ресурсы -->
+[doc-kotlin-official-eng]: https://kotlinlang.org/docs/reference/ "kotlinlang.org"
+[doc-learn-by-example-eng]: https://play.kotlinlang.org/byExample/overview "play.kotlinlang.org"
+[doc-kotlin-ru]: https://kotlinlang.ru/ "kotlinlang.ru"
+[kotlin-blog-official-eng]: https://blog.jetbrains.com/kotlin/ "blog.jetbrains.com"
+[kotlin-christmas]: https://kotlin.christmas/2020 "kotlin.christmas"
 
-[Kotlin Christmas](https://kotlin.christmas/2020 "kotlin.christmas") - ресурс, где вы найдете множество интересных статей по Kotlin, библиотеках, фреймворках и лучших практик.
+<!-- Ссылки на версии Kotlin -->
+[kotlin-1.3.70-blog]: https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/ "blog.jetbrains.com"
+[kotlin-1.4.0]: https://kotlinlang.org/docs/whatsnew14.html "kotlinlang.org"
+[kotlin-1.4.20]: https://kotlinlang.org/docs/whatsnew1420.html "kotlinlang.org"
+[kotlin-1.4.30]: https://kotlinlang.org/docs/whatsnew1430.html "kotlinlang.org"
+[kotlin-1.5.0]: https://kotlinlang.org/docs/whatsnew15.html "kotlinlang.org"
+[kotlin-1.5.20]: https://kotlinlang.org/docs/whatsnew1520.html "kotlinlang.org"
+[kotlin-1.5.30]: https://kotlinlang.org/docs/whatsnew1530.html "kotlinlang.org"
+
+<!-- Внутренние ссылки -->
+[bimlibik-basic-syntax]: /posts/kotlin-basic-syntax/ "bimlibik.github.io"
+[bimlibik-null-safety]: /posts/kotlin-null-safety/ "bimlibik.github.io"
+[bimlibik-visibility-modifiers]: /posts/kotlin-visibility-modifiers/ "bimlibik.github.io"
+[bimlibik-const-modifier]: /posts/kotlin-const-modifier/ "bimlibik.github.io"
+[bimlibik-lateinit-and-lazy]: /posts/kotlin-lateinit-and-lazy/ "bimlibik.github.io"
+[bimlibik-lambdas-expressions-and-anonymous-functions]: /posts/kotlin-lambdas-expressions-and-anonymous-functions/ "bimlibik.github.io"
+[bimlibik-scope-functions]: /posts/kotlin-scope-functions/ "bimlibik.github.io"
+[bimlibik-operator-overloading]: /posts/kotlin-operator-overloading/ "bimlibik.github.io"
+[bimlibik-collections]: /posts/kotlin-collections/ "bimlibik.github.io"
+
+[bimlibik-open-keyword]: /posts/kotlin-open-keyword/ "bimlibik.github.io"
+[bimlibik-data-classes]: /posts/kotlin-data-classes/ "bimlibik.github.io"
+[bimlibik-nested-and-inner-clesses]: /posts/kotlin-nested-and-inner-clesses/ "bimlibik.github.io"
+[bimlibik-enum-classes]: /posts/kotlin-enum-classes/ "bimlibik.github.io"
+[bimlibik-sealed-classes]: /posts/kotlin-sealed-classes/ "bimlibik.github.io"
+[bimlibik-constructors-and-init-block]: /posts/kotlin-constructors-and-init-block/ "bimlibik.github.io"
+[bimlibik-abstract-classes-and-interfaces]: /posts/kotlin-abstract-classes-and-interfaces/ "bimlibik.github.io"
+[bimlibik-object-keyword]: /posts/kotlin-object-keyword/ "bimlibik.github.io"
+
+[bimlibik-gson]: /posts/kotlin-gson/ "bimlibik.github.io"
