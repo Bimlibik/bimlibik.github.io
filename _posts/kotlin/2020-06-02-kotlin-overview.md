@@ -38,7 +38,9 @@ Studio, можно использовать при разработке на Kot
 
 ## Релизы
 
-На данный момент последняя версия Kotlin вышла 24 августа 2021 года - 1.5.30. [Подробнее][kotlin-1.5.30].
+На данный момент последняя версия Kotlin вышла 16 ноября 2021 года - 1.6.0. [Подробнее][kotlin-1.6.0].
+
+Версия 1.5.30, дата выхода - 24 августа 2021 года. [Подробнее][kotlin-1.5.30]
 
 Версия 1.5.20, дата выхода - 24 июня 2021 года. [Подробнее][kotlin-1.5.20]
 
@@ -94,6 +96,7 @@ Studio, можно использовать при разработке на Kot
 [Неофициальный сайт][doc-kotlin-ru] с частичным переводом документации на русский язык.  
 [Kotlin blog][kotlin-blog-official-eng].  
 [Kotlin Christmas][kotlin-christmas] - ресурс, где вы найдете множество интересных статей по Kotlin, библиотеках, фреймворках и лучших практик.  
+[Kotlin Cheat Sheet][kotlin-cheat-sheet] - шпаргалка для новичков по основному синтаксису.  
 
 
 <!-- Ссылки на сторонние ресурсы -->
@@ -102,6 +105,7 @@ Studio, можно использовать при разработке на Kot
 [doc-kotlin-ru]: https://kotlinlang.ru/ "kotlinlang.ru"
 [kotlin-blog-official-eng]: https://blog.jetbrains.com/kotlin/ "blog.jetbrains.com"
 [kotlin-christmas]: https://kotlin.christmas/2020 "kotlin.christmas"
+[kotlin-cheat-sheet]: https://drive.google.com/file/d/1G-waZ_omN6nwA63O31odBX3nOB_CaPbO/view?usp=sharing
 
 <!-- Ссылки на версии Kotlin -->
 [kotlin-1.3.70-blog]: https://blog.jetbrains.com/kotlin/2020/03/kotlin-1-3-70-released/ "blog.jetbrains.com"
@@ -111,6 +115,7 @@ Studio, можно использовать при разработке на Kot
 [kotlin-1.5.0]: https://kotlinlang.org/docs/whatsnew15.html "kotlinlang.org"
 [kotlin-1.5.20]: https://kotlinlang.org/docs/whatsnew1520.html "kotlinlang.org"
 [kotlin-1.5.30]: https://kotlinlang.org/docs/whatsnew1530.html "kotlinlang.org"
+[kotlin-1.6.0]: https://kotlinlang.org/docs/whatsnew16.html "kotlinlang.org"
 
 <!-- Внутренние ссылки -->
 [bimlibik-basic-syntax]: /posts/kotlin-basic-syntax/ "bimlibik.github.io"
