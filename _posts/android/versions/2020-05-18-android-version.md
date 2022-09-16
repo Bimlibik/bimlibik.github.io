@@ -1,8 +1,8 @@
 ---
 title: История версий Android
-author: Leslie M.
+author: Bimlibik
 date: "2020-05-18 18:00:00 +0800"
-categories: [Android, General]
+categories: [Android, Android version history]
 tags: [android, history]
 ---
 
@@ -251,9 +251,10 @@ API: 28.
 
 <img src="/assets/img/posts/android-version/android-12.svg" alt="android 12 logo" height="300"/>
 
-## Android 12
+## Android 12 Snow Cone
 
-**Дата выхода:** выпущена предварительная версия для разработчиков 18 февраля 2021 года.
+**Дата выхода:** предварительная версия выпущена 18 февраля 2021 года, релиз - 04 октября 2021 года.  
+**API:** 31.
 
 - Улучшен внешний вид уведомлений.
 - Поддержка устройств со сгруглёнными углами.
@@ -262,7 +263,43 @@ API: 28.
 
 [Подробнее][android-12-bimlibik].
 
+***
+
+## Android 12L(12.1) Snow Cone
+
+**Дата выхода:** 07 марта 2022 года.  
+**API:** 32.
+
+Улучшения для складных телефонов, планшетов, экранов размером с настольный компьютер и Chromebook, а также изменения в пользовательском интерфейсе для адаптации к большим экранам.
+
+***
+
+<img src="/assets/img/posts/android-version/android-13.png" alt="android 13 logo" height="300"/>
+
+## Android 13 Tiramisu
+
+**Дата выхода:** 15 августа 2022 года.  
+**API:** 33.
+
+- **Notification Permission**. Для показа уведомлений нужно запросить разрешение у пользователя.
+- В нижней части панели уведомлений теперь отображается количество активных приложений. При нажатии на него открывается подробная панель, которая позволяет пользователю остановить любое из этих приложений.
+- **Photo Picker** - новый инструмент выбора фотографий, главной целью которого является повышение конфиденциальности пользователей за счёт ограничения доступа к медиафайлам приложения.
+- Добавлена возможность выбрать для каждого приложения отдельный язык.
+
+***
+
+## Полезные ссылки
+
+[Все релизы android][android-about-versions-doc] - официальная страничка со всеми версиями android.  
+[История Android от L до T][android-versions-L-T-habr] - статья с разбором значимых изменений в android.  
+[История версий Android][android-version-history-wiki] - страничка на вики.
+
 <!-- Ссылки -->
+
+<!-- Полезные ссылки -->
+[android-about-versions-doc]: https://developer.android.com/about/versions "developer.android.com"
+[android-versions-L-T-habr]: https://habr.com/ru/company/tinkoff/blog/686614/ "habr.com"
+[android-version-history-wiki]: https://en.wikipedia.org/wiki/Android_version_history "wikipedia.org"
 
 <!-- Android 10 -->
 [android-10-bimlibik]:/posts/android-10/
