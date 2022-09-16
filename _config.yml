@@ -14,7 +14,7 @@ lang: ru-RU
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Irkutsk
 
-title: Factis                          # the main title
+title: Bimlibik                          # the main title
 
 tagline: База знаний начинающего разработчика.  # it will display as the sub-title
 
@@ -35,8 +35,8 @@ telegram:
   username: leslie_m                # change to your telegram username
 
 social:
-  name: Leslie M.                 # it will shows as the copyright owner in Footer
-  email: 554476744j@gmail.com             # change to your email address
+  name: Bimlibik                 # it will shows as the copyright owner in Footer
+  email: bimlibik@gmail.com           # change to your email address
   links:
     # The first element serves as the copyright owner's link
     # https://twitter.com/username      # change to your twitter homepage
@@ -73,7 +73,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: 
+theme_mode:
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
