@@ -57,7 +57,7 @@ inline fun <T> genericsExample(value: T) {
 ```
 inline fun <T> genericsExample(value: T) {
     println(value)
-    prinln("Type of T: ${T::class.java}")
+    println("Type of T: ${T::class.java}")
 }
 ```
 
