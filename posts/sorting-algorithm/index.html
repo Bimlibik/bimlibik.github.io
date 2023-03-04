@@ -1,0 +1,569 @@
+<!DOCTYPE html><html lang="ru-RU" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-cache-enabled" content="false"><meta name="generator" content="Jekyll v4.3.2" /><meta property="og:title" content="Алгоритмы сортировки" /><meta name="author" content="Leslie M." /><meta property="og:locale" content="ru_RU" /><meta name="description" content="Алгоритм сортировки — это алгоритм для упорядочивания элементов в списке." /><meta property="og:description" content="Алгоритм сортировки — это алгоритм для упорядочивания элементов в списке." /><link rel="canonical" href="http://bimlibik.github.io/posts/sorting-algorithm/" /><meta property="og:url" content="http://bimlibik.github.io/posts/sorting-algorithm/" /><meta property="og:site_name" content="Bimlibik" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-11-04T21:08:00+08:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Алгоритмы сортировки" /><meta name="twitter:site" content="@twitter_username" /><meta name="twitter:creator" content="@Leslie M." /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"Алгоритм сортировки — это алгоритм для упорядочивания элементов в списке.","headline":"Алгоритмы сортировки","dateModified":"2020-11-04T21:08:00+08:00","datePublished":"2020-11-04T21:08:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://bimlibik.github.io/posts/sorting-algorithm/"},"url":"http://bimlibik.github.io/posts/sorting-algorithm/","author":{"@type":"Person","name":"Leslie M."},"@type":"BlogPosting","@context":"https://schema.org"}</script><title>Алгоритмы сортировки | Bimlibik</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-159618579-2"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-159618579-2'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/sample/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Bimlibik</a></div><div class="site-subtitle font-italic">База статей по Android и Kotlin.</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>ГЛАВНАЯ</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>КАТЕГОРИИ</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>ТЕГИ</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>АРХИВ</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>О САЙТЕ</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/Bimlibik" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Статьи </a> </span> <span>Алгоритмы сортировки</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Поиск..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Алгоритмы сортировки</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="04.11.2020, 21:08" prefix="Опубликовано " > 04 November 2020 <i class="unloaded">2020-11-04T21:08:00+08:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="Всего слов - 3064"> Время чтения 17 мин. </span></div></div><div class="post-content"><p>Алгоритм сортировки — это алгоритм для упорядочивания элементов в списке.</p><hr /><h2 id="виды-алгоритмов-сортировки">Виды алгоритмов сортировки</h2><h3 id="сортировка-пузырьком--bubble-sort">Сортировка пузырьком / Bubble sort</h3><p><a href="https://en.wikipedia.org/wiki/Bubble_sort" title="wikipedia.org">wiki</a></p><p>Сортировка пузырьком — это простейший и один из самых известных алгоритмов сортировки. Идея заключается в последовательном сравнении значений соседних элементов. Если текущий элемент больше следующего, меняем их местами. Алгоритм необходимо повторять до тех пор, пока массив не будет отсортирован.</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/img/posts/sorting-algorithm/bubble-sort-example.png" alt="Сортировка пузырьком, пример" height="550" /></p><p><strong>Плюсы и минусы</strong></p><p>Этот алгоритм считается учебным и почти не применяется на практике из-за низкой эффективности: он медленно работает на тестах, в которых маленькие элементы (их называют «черепахами») стоят в конце массива. Однако на нём основаны многие другие методы, например, шейкерная сортировка и сортировка расчёской.</p><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre>private fun bubbleSort(array: IntArray) {
+    if (array.isEmpty()) return
+
+        var swap = true
+        while (swap) {
+            swap = false
+            for (i in 1 until array.size) {
+                if (array[i] &lt; array[i - 1]) {
+                    val temp = array[i - 1]
+                    array[i - 1] = array[i]
+                    array[i] = temp
+                    swap = true
+                }
+            }
+        }
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n)<td>O(n<sup>2</sup>)<td>O(n<sup>2</sup>)<tr><td>Память<td> <td> <td>O(1)</table></div><h3 id="сортировка-перемешиванием--shaker-cocktail-ripple-shuffle-shuttle--sort">Сортировка перемешиванием / Shaker (cocktail, ripple, shuffle, shuttle) sort</h3><p><a href="https://en.wikipedia.org/wiki/Cocktail_shaker_sort" title="wikipedia.org">wiki</a></p><p>Также известна как шейкерная или коктейльная сортировка.</p><p>Сортировка перемешиванием - это разновидность сортировки пузырьком. Отличие в том, что данная сортировка в рамках одной итерации проходит по массиву в обоих направлениях (слева направо и справа налево), тогда как сортировка пузырьком - только в одном направлении (слева направо).</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Обход массива слева направо, аналогично пузырьковой - сравнение соседних элементов, меняя их местами, если левое значение больше правого. В итоге наибольшее число будет перемещено в конец массива.<li>Обход массива в обратном направлении (справа налево), начиная с элемента, который находится перед последним отсортированным. На этом этапе элементы также сравниваются между собой и меняются местами, чтобы наименьшее значение всегда было слева. В итоге наименьшее число будет перемещено в начало массива.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre>fun cocktailSort(a: IntArray) {
+    fun swap(i: Int, j: Int) {
+        val temp = a[i]
+        a[i] = a[j]
+        a[j] = temp
+    }
+    do {
+        var swapped = false
+        for (i in 0 until a.size - 1)
+            if (a[i] &gt; a[i + 1]) {
+                swap(i, i + 1)
+                swapped = true
+            }
+        if (!swapped) break
+        swapped = false
+        for (i in a.size - 2 downTo 0)
+            if (a[i] &gt; a[i + 1]) {
+                swap(i, i + 1)
+                swapped = true
+            }
+    } while (swapped)
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n)<td>O(n<sup>2</sup>)<td>O(n<sup>2</sup>)<tr><td>Память<td> <td> <td>O(1)</table></div><p>Сложность у алгоритма такая же, как и у сортировки пузырьком, однако реальное время работы лучше (обычно менее чем в два раза быстрее).</p><h3 id="сортировка-расчёской--comb-sort">Сортировка расчёской / Comb sort</h3><p><a href="https://en.wikipedia.org/wiki/Comb_sort" title="wikipedia.org">wiki</a></p><p>Сортировка расчёской - еще одна разновидность сортировки пузырьком. Данная сортировка улучшает сортировку пузырьком за счет устранения маленьких значений в конце списка (<em>черепах</em>).</p><p>Достигается это тем, что вместо сравнения соседних элементов, сравниваются элементы на достаточно большом расстоянии друг от друга, постепенно уменьшая это расстояние. Сначала разрыв между элементами берётся максимальный, т.е. на единицу меньше, чем размер массива. Затем на каждой итерации расстояние уменьшается путём деления расстояния на <em>фактор уменьшения</em>. Так продолжается до тех пор, пока разность индексов сравниваемых элементов не достигнет единицы. Тогда сравниваются уже соседние элементы как и в сортировке пузырьком, но эта итерация будет последней.</p><p>Оптимальное значение фактора уменьшения - 1,247.</p><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre>fun combSort(input: Array&lt;Int&gt;) {
+    var gap = input.size
+    if (gap &lt;= 1) return  // если массив &lt;= 1, то он считается отсортированным
+    var swaps = false
+    while (gap &gt; 1 || swaps) {
+        gap = (gap / 1.247331).toInt()
+        if (gap &lt; 1) gap = 1
+        var i = 0
+        swaps = false
+        while (i + gap &lt; input.size) {
+            if (input[i] &gt; input[i + gap]) {
+                val tmp = input[i]
+                input[i] = input[i + gap]
+                input[i + gap] = tmp
+                swaps = true
+            }
+            i++
+        }
+    }
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n log n)<td>Ω(n<sup>2</sup>/2<sup>p</sup>), где p - количество инкрементов<td>O(n<sup>2</sup>)<tr><td>Память<td> <td> <td>O(1)</table></div><h3 id="сортировка-вставками--insertion-sort">Сортировка вставками / Insertion sort</h3><p><a href="https://en.wikipedia.org/wiki/Insertion_sort" title="wikipedia.org">wiki</a></p><p>Сортировка вставками - алгоритм, при котором каждый последующий элемент массива сравнивается с предыдущими элементами (отсортированными) и вставляется в нужную позицию.</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Сравниваем второй элемент с первым элементом массива и при необходимости меняем их местами. Условно эти элементы (первый и второй) будут являться отсортированным массивом, остальные элементы - неотсортированным.<li>Сравниваем следующий элемент из неотсортированного массива с элементами отсортированного и вставляем в нужную позицию.<li>Повторям шаг 2 до тех пор, пока в неотсортированном массиве не останется элементов.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre>fun insertionsort(items:MutableList&lt;Int&gt;): List&lt;Int&gt; {
+    if (items.isEmpty() || items.size &lt; 2){
+        return items
+    }
+
+    for (count in 1..items.count() - 1) {
+        val item = items[count]
+        var i = count
+        while (i &gt; 0 &amp;&amp; item &lt; items[i - 1]) {
+            items[i] = items[i - 1]
+            i -= 1
+        }
+        items[i] = item
+    }
+    return items
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n)<td>O(n<sup>2</sup>)<td>O(n<sup>2</sup>)<tr><td>Память<td> <td> <td>O(1)</table></div><h3 id="сортировка-шелла--shell-sort">Сортировка Шелла / Shell sort</h3><p><a href="https://en.wikipedia.org/wiki/Shellsort" title="wikipedia.org">wiki</a></p><p>Сортировка Шелла - усовершенствованная разновидность сортировки вставками.</p><p>Сначала сравниваются и сортируются между собой значения, стоящие друг от друга на некотором расстоянии - <strong>d</strong>. После этого расстояние <strong>d</strong> уменьшается и процедура повторяется до тех пор, пока значение <strong>d</strong> не станет минимальным, т.е. <strong>d = 1</strong>. Это означает, что сортировка достигла последнего шага. А на последнем шага элементы сортируются обычной сортировкой вставками.</p><p>Первоначально было предложено расчитывать расстояние между сравниваемыми элементами следующим образом:</p><ul><li>первая итерация - d<sub>1</sub> = N/2, где N - размер массива;<li>последующие итерации - d<sub>i</sub> = d<sub>i-1</sub>/2;<li>последняя итерация - d<sub>k</sub> = 1</ul><p>Существуют и другие последовательности.</p><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>fun sort(arr: IntArray): Int {
+    val n = arr.size
+    var gap = n / 2
+    while (gap &gt; 0) {
+        var i = gap
+        while (i &lt; n) {
+            val temp = arr[i]
+            var j = i
+            while (j &gt;= gap &amp;&amp; arr[j - gap] &gt; temp) {
+                arr[j] = arr[j - gap]
+                j -= gap
+            }
+            arr[j] = temp
+            i += 1
+        }
+        gap /= 2
+    }
+    return 0
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n log n)<td>зависит от выбранных шагов (d)<td>O(n<sup>2</sup>) или O(n log<sup>2</sup> n) (зависит от выбранных шагов)<tr><td>Память<td> <td> <td>O(1)</table></div><h3 id="сортировка-выбором--selection-sort">Сортировка выбором / Selection Sort</h3><p><a href="https://en.wikipedia.org/wiki/Selection_sort" title="wikipedia.org">wiki</a></p><p>Сортировка выбором - это алгоритм, при котором многократно осуществляется поиск минимального элемента в неотсортированной части массива и его помещение в конец отсортированной части массива.</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Данный алгоритм условно делит массив на две части:<ul><li>подмассив, который уже отсортирован (находится в левой части массива),<li>подмассив, который нужно отсортировать (находится в правой части массива).</ul><li>Поиск минимального значения в неотсортированном массиве. Найденное значение меняем местами с первым элементом в неотсортированном массиве.<li>Повторяем предыдущий шаг до тех пор, пока массив не будет отсортирован.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre>fun selectionSort(sampleArray: IntArray) {
+    var n = sampleArray.size
+    var temp: Int
+    for(i in 0..n-1) {
+        var indexOfMin = i
+        for(j in n-1 downTo  i) {
+            if (sampleArray[j] &lt; sampleArray[indexOfMin])
+                indexOfMin=j
+        }
+        if (i != indexOfMin) {
+            temp = sampleArray[i]
+            sampleArray[i] = sampleArray[indexOfMin]
+            sampleArray[indexOfMin] = temp
+        }
+    }
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n<sup>2</sup>)<td>O(n<sup>2</sup>)<td>O(n<sup>2</sup>)<tr><td>Память<td> <td> <td>O(1)</table></div><h3 id="быстрая-сортировка--quick-sort">Быстрая сортировка / Quick Sort</h3><p><a href="https://en.wikipedia.org/wiki/Quicksort" title="wikipedia.org">wiki</a></p><p>Быстрая сортировка - это алгоритм типа “разделяй и властвуй”.</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Выбрать из массива элемент, который обычно называют <em>опорным</em>. Это может быть любой элемент из массива. От выбора опорного элемента не зависит корректность алгоритма, но в отдельных случаях может сильно зависеть его эффективность.<li>Сравнить все остальные элементы с опорным и переставить их в массиве так, чтобы разбить массив на три непрерывных отрезка, следующих друг за другом: «элементы меньшие опорного», «равные» и «большие».<li>Рекурсивно применить первые два шага к отрезкам, содержащим «меньшие» и «большие» значения. Не применять к массиву, в котором только один элемент или отсутствуют элементы.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre>fun quicksort(items: List&lt;Int&gt;): List&lt;Int&gt; {
+    // если в массиве меньше 2х элементов, то он уже отсортирован
+    if (items.count() &lt; 2) {
+        return items
+    }
+
+    // выбираем опорный элемент
+    val pivot = items[items.count()/2]
+
+    // сортируем элементы по 3м массивам - меньшие, равные и большие опорного
+    val equal = items.filter { it == pivot }
+    val less = items.filter { it &lt; pivot }
+    val greater = items.filter { it &gt; pivot }
+
+    // рекурсивно вызываем функцию для меньших и больших элементов
+    return quicksort(less) + equal + quicksort(greater)
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n)<td>O(n log n)<td>O(n<sup>2</sup>)<tr><td>Память<td> <td> <td>O(n)</table></div><h3 id="сортировка-слиянием--merge-sort">Сортировка слиянием / Merge sort</h3><p><a href="https://en.wikipedia.org/wiki/Merge_sort" title="wikipedia.org">wiki</a></p><p>Сортировка слиянием - это алгоритм типа “разделяй и властвуй”.</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Массив разбивается на две части примерно одинакового размера. Разбиение получившихся массивов повторяется до тех пор, пока размер каждого массива не достигнет единицы.<li>Каждая из получившихся частей сортируется отдельно, после чего происходит слияние двух массивов следующим образом:<ul><li>На каждом шаге сравниваем первые элементы массивов, берём наименьшее значение и записываем в результирующий массив.<li>Когда один из массив закончился, добавляем оставшиеся элементы второго массива в результирующий массив.</ul><li>Слияние подмассивов продолжается до тех пор, пока не получим один, отсортированный массив.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre><td class="rouge-code"><pre>fun mergeSort(list: List&lt;Int&gt;): List&lt;Int&gt; {
+    if (list.size &lt;= 1) {
+        return list
+    }
+
+    val middle = list.size / 2
+    var left = list.subList(0, middle)
+    var right = list.subList(middle, list.size)
+
+    return merge(mergeSort(left), mergeSort(right))
+}
+
+fun merge(left: List&lt;Int&gt;, right: List&lt;Int&gt;): List&lt;Int&gt;  {
+    var indexLeft = 0
+    var indexRight = 0
+    var newList: MutableList&lt;Int&gt; = mutableListOf()
+
+    while (indexLeft &lt; left.count() &amp;&amp; indexRight &lt; right.count()) {
+        if (left[indexLeft] &lt;= right[indexRight]) {
+            newList.add(left[indexLeft])
+            indexLeft++
+        } else {
+            newList.add(right[indexRight])
+            indexRight++
+        }
+    }
+
+    while (indexLeft &lt; left.size) {
+        newList.add(left[indexLeft])
+        indexLeft++
+    }
+
+    while (indexRight &lt; right.size) {
+        newList.add(right[indexRight])
+        indexRight++
+    }
+    return newList;
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n log n)<td>O(n log n)<td>O(n log n)<tr><td>Память<td> <td> <td>O(n)</table></div><h3 id="пирамидальная-сортировка--heap-sort">Пирамидальная сортировка / Heap sort</h3><p><a href="https://en.wikipedia.org/wiki/Heapsort" title="wikipedia.org">wiki</a></p><p>Пирамидальная сортировка - это улучшенная сортировка выбором.</p><p>Для сортировки используется бинарное сортирующее дерево - дерево, у которого выполнены условия:</p><ul><li>Каждый лист имеет глубину либо <strong>d</strong>, либо <strong>d-1</strong>, <strong>d</strong> — максимальная глубина дерева.<li>Значение в любой вершине не меньше значения её потомков.</ul><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/img/posts/sorting-algorithm/tree.png" alt="сортирующее дерево" height="450" /></p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Выстраиваем массив в виде сортирующего дерева:<br /> Array[i] &gt;= Array[2i + 1]<br /> Array[i] &gt;= Array[2i + 2]<br /> при 0 &lt;= i &lt; n/2<li>Обмениваем элементы Array[0] и Array[n-1] местами. Array[0] является корнем сортирующего дерева, т.е. самым большим значением массива.<li>Повторям шаги до тех пор, пока в сортирующем дереве не останется один элемент.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre><td class="rouge-code"><pre>fun heapSort(a: IntArray) {
+    heapify(a)
+    var end = a.size - 1
+    while (end &gt; 0) {
+        val temp = a[end]
+        a[end] = a[0]
+        a[0] = temp
+        end--
+        siftDown(a, 0, end)
+    }
+}
+
+fun heapify(a: IntArray) {
+    var start = (a.size - 2) / 2
+    while (start &gt;= 0) {
+        siftDown(a, start, a.size - 1)
+        start--
+    }
+}
+
+fun siftDown(a: IntArray, start: Int, end: Int) {
+    var root = start
+    while (root * 2 + 1 &lt;= end) {
+        var child = root * 2 + 1
+        if (child + 1 &lt;= end &amp;&amp; a[child] &lt; a[child + 1]) child++
+        if (a[root] &lt; a[child]) {
+            val temp = a[root]
+            a[root] = a[child]
+            a[child] = temp
+            root = child
+        }
+        else return
+    }
+}
+
+fun main(args: Array&lt;String&gt;) {
+    val aa = arrayOf(
+        intArrayOf(100, 2, 56, 200, -52, 3, 99, 33, 177, -199),
+        intArrayOf(4, 65, 2, -31, 0, 99, 2, 83, 782, 1),
+        intArrayOf(12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8)
+    )
+
+    for (a in aa) {
+        heapSort(a)
+        println(a.joinToString(", "))
+    }
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n log n)<td>O(n log n)<td>O(n log n) или O(n) (при одинаковых ключах)<tr><td>Память<td> <td> <td>O(1)</table></div><h3 id="сортировка-подсчётом--counting-sort">Сортировка подсчётом / Counting sort</h3><p><a href="https://en.wikipedia.org/wiki/Counting_sort" title="wikipedia.org">wiki</a></p><p>Сортировка подсчётом - это алгоритм, основанный на подсчёте повторяющихся элементов в массиве.</p><p><strong>Общая идея алгоритма (простой вариант):</strong></p><ul><li>Есть массив <strong>A</strong> длиной <strong>n</strong> элементов, который нужно отсортировать. Создаётся вспомогательный массив <strong>C</strong> с индексами от 0 до <strong>k</strong> (максимальное значение в массиве <strong>A</strong>) и заполняется нулями.<li>Последовательно проходим по массиву <strong>A</strong> и записываем в <strong>C[i]</strong> количество чисел, равных <strong>i</strong>. Таким образом индексы в массиве <strong>C</strong> - это значения массива <strong>A</strong>, а значение в массиве <strong>C</strong> - это то, сколько раз это число повторяется в массиве <strong>A</strong>.<li>Проходим по массиву <strong>C</strong> и переносим значения в массив <strong>A</strong>.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre>fun countingSort(array: IntArray) {
+    if (array.isEmpty()) return
+
+    // вычисляем минимальное и максимальное значение в массиве
+    val min = array.min()!!
+    val max = array.max()!!
+
+    // создаём вспомогательный массив, все элементы которого == 0
+    val count = IntArray(max - min + 1)
+
+    // подсчитываем числа и записываем во вспомогательный массив
+    for (number in array) count[number - min]++
+
+    // переносим значения в первоначальный массив
+    var z = 0
+    for (i in min..max)
+        while (count[i - min] &gt; 0) {
+            array[z++] = i
+            count[i - min]--
+        }
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>Ω(n+k)<td>θ(n+k)<td>O(n + k)<tr><td>Память<td> <td> <td>O(k)</table></div><ul><li>n - размер отсортированного массива, а k - размер вспомогательного массива</ul><h3 id="блочная-карманная-корзинная-сортировка--bucket-sort">Блочная (карманная, корзинная) сортировка / Bucket sort</h3><p><a href="https://en.wikipedia.org/wiki/Bucket_sort" title="wikipedia.org">wiki</a></p><p>Блочная сортировка - это алгоритм, основанный на разделении входного массива на несколько частей - блоки/сегменты - и использовании другого алгоритма для их сортировки.</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Делим массив на блоки таким образом, чтобы элементы в каждом следующем блоке были всегда больше, чем в предыдущем.<li>Сортируем каждый блок, используя какой-либо другой алгоритм сортировки, либо рекурсивно тем же методом разбиения на блоки.<li>Объединяем все блоки в один массив.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre>fun insertion_sort(arr: ArrayList&lt;Double&gt;) {
+    var n = arr.size
+    var i: Int
+    for (j in 1 until n) {
+        var key = arr[j]
+        i = j - 1
+        while (i &gt;= 0 &amp;&amp; arr[i] &gt; key) {
+            arr[i + 1] = arr[i]
+            i--
+        }
+        arr[i + 1] = key
+    }
+}
+
+fun bucketSort(arr:Array&lt;Double&gt;) {
+    var n = arr.size
+    var bucket = Array&lt;ArrayList&lt;Double&gt;&gt;(n, {i-&gt; ArrayList() } )
+
+    for(i in 0..arr.size-1) {
+        bucket[Math.floor(n * arr[i]).toInt()].add(arr[i])
+    }
+
+    for(i in 0..arr.size - 1) {
+        insertion_sort(bucket[i])
+    }
+
+    for (i in 1..arr.size - 1) {
+        bucket[0].addAll(bucket[i])
+    }
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>Ω(n+k)<td>θ(n+k)<td>O(n<sup>2</sup>)<tr><td>Память<td> <td> <td>O(1)</table></div><ul><li>k - количество блоков.</ul><h3 id="поразрядная-цифровая-сортировка--radix-sort">Поразрядная (цифровая) сортировка / Radix sort</h3><p><a href="https://en.wikipedia.org/wiki/Radix_sort" title="wikipedia.org">wiki</a></p><p>Поразрядная сортировка - это алгоритм, который использует внутреннюю структуру сортируемых объектов.</p><p>Перед началом сортировки необходимо знать:</p><ul><li><strong>length</strong> - максимальное количество разрядов в сортируемых величинах (например, при сортировке слов необходимо знать максимальное количество букв в слове);<li><strong>rang</strong> количество возможных значений одного разряда (при сортировке слов – количество букв в алфавите).</ul><p><strong>Общая идея алгоритма:</strong></p><ul><li>Создаём пустые массивы, количество которых равно <strong>rang</strong>.<li>Распределяем исходные значения по этим массивам. Распределение осуществляется по значению младшего (крайнего) разряда.<li>Соединяем значения в той последовательности, в которой они находятся после распределения по спискам.<li>Повторяем шаги 1-2 для оставшихся разрядов.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre>fun radixSort(original: IntArray): IntArray {
+    var old = original
+    for (shift in 31 downTo 0) {
+        val tmp = IntArray(old.size)
+        var j = 0
+
+        for (i in 0 until old.size) {
+            val move = (old[i] shl shift) &gt;= 0
+            val toBeMoved = if (shift == 0) !move else move
+
+            if (toBeMoved)
+                tmp[j++] = old[i]
+            else {
+                old[i - j] = old[i]
+            }
+        }
+        for (i in j until tmp.size) tmp[i] = old[i - j]
+        old = tmp
+    }
+    return old
+}
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>Ω(n+w)<td>θ(nk)<td>O(w * n)<tr><td>Память<td> <td> <td>O(n + w)</table></div><ul><li>w - количество бит, требуемых для хранения каждого ключа.</ul><h3 id="битонная-сортировка--bitonic-sort">Битонная сортировка / Bitonic sort</h3><p><a href="https://en.wikipedia.org/wiki/Bitonic_sorter" title="wikipedia.org">wiki</a></p><p>Битонная сортировка - алгоритм, основанный на понятии <em>битонных последовательностей</em> и операций над ними.</p><p>Битонная последовательность - последовательность, которая сначала возрастает, а потом убывает.</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>Создаём битонную последовательность. В результате получаем два массива: первый отсортирован в порядке возрастания, второй - в порядке убывания.<li>Последовательно сравниваем элементы первого и второго массивов (сначала первые элементы, потом вторые и т.д.). Если какой либо элемент из второго массива окажется меньше, то меняем его местами с элементом из первого массива. В результате в первом массиве окажутся наименьшие элементы из обоих массивов, а во втором - наибольшие. При этом каждый из массивов будет являться битонной последовательностью.<li>Рекурсивно применяем второй шаг к отсортированным массивам, после чего массивы можно склеить.</ul><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="/assets/img/posts/sorting-algorithm/bitonic-sort.png" alt="Битонная сортировка" /></p><p><strong>Чтобы превратить произвольную последовательность в битонную, нужно:</strong></p><ul><li>разделить последовательность пополам;<li>первую часть отсортировать по возрастанию;<li>вторую часть отсортировать по убыванию.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>// в разработке
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(log<sup>2</sup>(n)<td>O(log<sup>2</sup>(n)<td>O(log<sup>2</sup>(n)<tr><td>Память<td> <td> <td>O(log<sup>2</sup>(n)</table></div><h3 id="timsort">Timsort</h3><p><a href="https://en.wikipedia.org/wiki/Timsort" title="wikipedia.org">wiki</a></p><p>Timsort - гибридный алгоритм, сочетающий в себе сортировку вставками и сортировку слиянием.</p><p><strong>Общая идея алгоритма:</strong></p><ul><li>По специальному алгоритму разделяем входной массив на подмассивы.<li>Каждый подмассив сортируем при помощи сортировки вставками.<li>Отсортированные массивы собираются в единый массив с помощью модифицированной сортировки слиянием.</ul><p><strong>Пример реализации на Kotlin:</strong></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>// в разработке
+</pre></table></code></div></div><div class="table-wrapper"><table><thead><tr><th>Сложность<th>Лучшее<th>Среднее<th>Худшее<tbody><tr><td>Время<td>O(n)<td>O(n log n)<td>O(n log n)<tr><td>Память<td> <td> <td>O(n)</table></div><hr /><h2 id="полезные-ссылки">Полезные ссылки</h2><p><a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B8" title="wikipedia.org">Алгоритм сортировки</a> - общая статья на wiki об алгоритмах сортировки.<br /> <a href="https://www.programming-algorithms.net/" title="programming-algorithms.net">Programming algorithms</a> - сайт, посвящённый алгоритмам. Есть раздел с алгоритмами сортировки.<br /> <a href="https://habr.com/ru/post/335920/" title="habr.com">Описание алгоритмов сортировки и сравнение их производительности</a> - статья, в которой сравниваются все основные сортировки на большом числе тестов разного типа и размера.<br /> <a href="https://www.geeksforgeeks.org/sorting-algorithms/" title="geeksforgeeks.org">Sorting Algorithms</a> - список статей на geeksforgeeks.org об алгоритмах сортировки.<br /> <a href="https://imgur.com/gallery/voutF" title="imgur.com">Sorting Algorithms Visualized</a> - радужная визуализация алгоритмов сортировки.<br /> <a href="https://github.com/gazolla/Kotlin-Algorithm" title="github.com">Kotlin Algorithms</a> - примеры реализации алгоритмов на Kotlin.<br /> <a href="https://github.com/bmaslakov/kotlin-algorithm-club" title="github.com">Kotlin Algorithm Club</a> - примеры реализации алгоритмов на Kotlin.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/programming-theory/'>Programming Theory</a>, <a href='/categories/algorithms/'>Algorithms</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/algorithm/" class="post-tag no-text-decoration" >algorithm</a> <a href="/tags/theory/" class="post-tag no-text-decoration" >theory</a> <a href="/tags/sorting-algorithm/" class="post-tag no-text-decoration" >sorting algorithm</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Поделиться</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text='Алгоритмы сортировки' - Bimlibik&url=http://bimlibik.github.io/posts/sorting-algorithm/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title='Алгоритмы сортировки' - Bimlibik&u=http://bimlibik.github.io/posts/sorting-algorithm/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text='Алгоритмы сортировки' - Bimlibik&url=http://bimlibik.github.io/posts/sorting-algorithm/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Последние обновления</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/about-android/">Что такое Android</a><li><a href="/posts/kotlin-inline-functions/">Kotlin. Встроенные (inline) функции</a><li><a href="/posts/kotlin-collections/">Kotlin. Коллекции</a><li><a href="/posts/kotlin-overview/">Kotlin. Общий обзор</a><li><a href="/posts/kotlin-sealed-classes/">Kotlin. Изолированные (запечатанные) классы (sealed classes).</a></ul></div><div id="access-tags"> <span>Популярные теги</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/theory/">theory</a> <a class="post-tag" href="/tags/kotlin/">kotlin</a> <a class="post-tag" href="/tags/android/">android</a> <a class="post-tag" href="/tags/basics/">basics</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/android-version/">android version</a> <a class="post-tag" href="/tags/ui/">ui</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/history/">history</a> <a class="post-tag" href="/tags/oop/">oop</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Содержание</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Недавно просмотренное</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/complexity-of-algorithms/"><div class="card-body"> <span class="timeago small" > 29 October 2020 <i class="unloaded">2020-10-29T18:26:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Сложность алгоритмов. Big O. Основы.</h3><div class="text-muted small"><p> Сложность алгоритма - это количественная характеристика, которая говорит о том, сколько времени, либо какой объём памяти потребуется для выполнения алгоритма. Развитие технологий привело к тому, ч...</p></div></div></a></div><div class="card"> <a href="/posts/cache-algorithms/"><div class="card-body"> <span class="timeago small" > 30 October 2020 <i class="unloaded">2020-10-30T16:15:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Алгоритмы кэширования</h3><div class="text-muted small"><p> Кэш - это временное хранилище для данных, которые с наибольшей вероятностью могут быть повторно запрошены. Загрузка данных из кэша осуществляется быстрее, чем из хранилища с исходными данными, но...</p></div></div></a></div><div class="card"> <a href="/posts/android-obfuscation/"><div class="card-body"> <span class="timeago small" > 11 January 2021 <i class="unloaded">2021-01-11T01:14:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Обфускация кода</h3><div class="text-muted small"><p> Защита кода приложения это то, о чем не всегда задумывается разработчик. Но  ведь обфускация при сборке – это не только защита. Это также эффективный способ уменьшить размер конечного APK, а иногда...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/git-flow/" class="btn btn-outline-primary" prompt="Предыдущая статья"><p>Git Flow</p></a> <a href="/posts/android-obfuscation/" class="btn btn-outline-primary" prompt="Следующая статья"><p>Обфускация кода</p></a></div></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('.post-content img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2023 <a href="https://github.com/Bimlibik">Bimlibik</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Популярные теги</h4><a class="post-tag" href="/tags/theory/">theory</a> <a class="post-tag" href="/tags/kotlin/">kotlin</a> <a class="post-tag" href="/tags/android/">android</a> <a class="post-tag" href="/tags/basics/">basics</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/android-version/">android version</a> <a class="post-tag" href="/tags/ui/">ui</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/history/">history</a> <a class="post-tag" href="/tags/oop/">oop</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="http://bimlibik.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>

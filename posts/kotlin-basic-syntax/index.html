@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="ru-RU" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="pv-cache-enabled" content="false"><meta name="generator" content="Jekyll v4.3.2" /><meta property="og:title" content="Kotlin. Основной синтаксис" /><meta name="author" content="Leslie M." /><meta property="og:locale" content="ru_RU" /><meta name="description" content="В данной статье рассмотрим основной синтаксис языка Kotlin." /><meta property="og:description" content="В данной статье рассмотрим основной синтаксис языка Kotlin." /><link rel="canonical" href="http://bimlibik.github.io/posts/kotlin-basic-syntax/" /><meta property="og:url" content="http://bimlibik.github.io/posts/kotlin-basic-syntax/" /><meta property="og:site_name" content="Bimlibik" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-06-05T02:50:00+08:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Kotlin. Основной синтаксис" /><meta name="twitter:site" content="@twitter_username" /><meta name="twitter:creator" content="@Leslie M." /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"В данной статье рассмотрим основной синтаксис языка Kotlin.","headline":"Kotlin. Основной синтаксис","dateModified":"2020-06-05T02:50:00+08:00","datePublished":"2020-06-05T02:50:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://bimlibik.github.io/posts/kotlin-basic-syntax/"},"url":"http://bimlibik.github.io/posts/kotlin-basic-syntax/","author":{"@type":"Person","name":"Leslie M."},"@type":"BlogPosting","@context":"https://schema.org"}</script><title>Kotlin. Основной синтаксис | Bimlibik</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-159618579-2"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-159618579-2'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/sample/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Bimlibik</a></div><div class="site-subtitle font-italic">База статей по Android и Kotlin.</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>ГЛАВНАЯ</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>КАТЕГОРИИ</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>ТЕГИ</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>АРХИВ</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>О САЙТЕ</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/Bimlibik" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Статьи </a> </span> <span>Kotlin. Основной синтаксис</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Поиск..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Kotlin. Основной синтаксис</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="05.06.2020, 02:50" prefix="Опубликовано " > 05 June 2020 <i class="unloaded">2020-06-05T02:50:00+08:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="Всего слов - 2231"> Время чтения 12 мин. </span></div></div><div class="post-content"><p>В данной статье рассмотрим основной синтаксис языка Kotlin.</p><h2 id="переменные">Переменные</h2><p>Kotlin использует два разных ключевых слова для объявления переменных: <code class="language-plaintext highlighter-rouge">val</code> и <code class="language-plaintext highlighter-rouge">var</code>.</p><p>Используйте <code class="language-plaintext highlighter-rouge">val</code> для переменной, значение которой никогда не изменится, так как вы не сможете назначить ей другое значение. Если же значение переменной может измениться, то используйте <code class="language-plaintext highlighter-rouge">var</code>.</p><p>Рекомендуется всегда использовать <code class="language-plaintext highlighter-rouge">val</code>, если это позволяет логика программы. Студия это тоже отслеживает и будет подсказывать, если ключевое слово можно изменить на <code class="language-plaintext highlighter-rouge">val</code>.</p><p>Обратите внимание, что переменная, объявленная ключевым словом <code class="language-plaintext highlighter-rouge">val</code> хранит ссылку на объект. Именно ссылку невозможно изменить после инициализации. А вот объект, на который она ссылается может быть изменяемым.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>val languages = arrayListOf("Java")   // объявляется неизменяемая ссылка на объект
+languages.add("Kotlin")               // изменение объекта, на который она указывает
+</pre></table></code></div></div><p>При объявлении переменной сначала указывается ключевое слово, затем имя переменной и (в зависимости от ситуации) тип переменной.</p><p>В приведенном ниже примере <strong>count</strong> является переменной типа <strong>Int</strong>, которой присваивается начальное значение <strong>10</strong>:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>var count: Int = 10
+</pre></table></code></div></div><h3 id="приведение-типов">Приведение типов</h3><p>Тип переменной не всегда нужно указывать, так как компилятор Kotlin может определить тип, основываясь на типе значения.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>var languageName = "Kotlin"
+</pre></table></code></div></div><p>Поскольку значение <code class="language-plaintext highlighter-rouge">Kotlin</code> имеет тип <strong>String</strong>, то компилятор разумно предположит, что и переменная <code class="language-plaintext highlighter-rouge">languageName</code> имеет тип <strong>String</strong>.</p><p>Тип определяется во время компиляции и далее никогда не меняется.</p><h3 id="защита-от-null">Защита от null</h3><p>В некоторых языках переменные ссылочного типа могут объявляться без исходного явного значения. В этих случаях переменные обычно содержат нулевые значения. В Kotlin переменные не могут содержать нулевые значения по умолчанию. Это означает, что следующий код вызовет ошибку:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>val languageName: String = null
+</pre></table></code></div></div><p>Чтобы разрешить переменной хранить нулевое значение, нужно явно объявить ее как <strong>nullable</strong> при помощи символа <code class="language-plaintext highlighter-rouge">?</code>. Тогда она сможет хранить как строку, так и null.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>val languageName: String? = null
+</pre></table></code></div></div><h3 id="проверка-на--null-if--else-безопасные-вызовы">Проверка на null (if / else, безопасные вызовы)</h3><p>Если переменная объявлена как <strong>nullable</strong>, Kotlin будет проверять ее и предупреждать о возможной ошибке на этапе разработки. Это означает, что перед выполнением какого-либо действия, нужно убедиться, что в переменной хранится не нулевое значение. Сделать это можно с помощью обычной проверки <strong>if / else</strong>, тем самым обработав оба варианта.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>val a: Int? = 10
+
+val b = if (a != null) {
+  a*2
+} else {
+  -1
+}
+</pre></table></code></div></div><p>Такая проверка сработает только в том случае, если переменная не может быть изменена во время этой проверки (например, если переменная локальная или объявлена ключевым словом <code class="language-plaintext highlighter-rouge">val</code>). Иначе может оказаться так, что переменной присвоится значение <strong>null</strong> во время проверки.</p><p>Второй способ проверки - воспользоваться оператором безопасного вызова <code class="language-plaintext highlighter-rouge">?.</code>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>languageName?.length
+</pre></table></code></div></div><p>В этом случае мы получим длину переменной <code class="language-plaintext highlighter-rouge">languageName</code>, если ее значение отлично от <strong>null</strong>. Иначе вернётся <strong>null</strong>.</p><p>Для проведения каких-либо операций исключительно над <strong>non-null</strong> значениями можно использовать оператор <code class="language-plaintext highlighter-rouge">let</code> вместе с оператором безопасного вызова:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre> item?.let { println(it) }
+</pre></table></code></div></div><p>Значение будет выведено на печать, если оно не <strong>null</strong>.</p><hr /><h2 id="условные-выражения">Условные выражения</h2><h3 id="if">if</h3><p>Kotlin позволяет использовать <code class="language-plaintext highlighter-rouge">if</code> несколькими способами. Один из них ничем не отличается от применения <code class="language-plaintext highlighter-rouge">if</code> в Java:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>if (x &gt; 0) {
+    println("x больше чем 0")
+} else {
+    println("x меньше чем 0")
+}
+</pre></table></code></div></div><p>Также <code class="language-plaintext highlighter-rouge">if</code> может выступать в качестве выражения, т.е. оно может вернуть значение и присвоить его переменной. В данном случае обязательным условием является использование <strong>else</strong>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>val max = if (a &gt; b) {
+    print("возвращаем a")
+    a
+  }
+  else {
+    print("возвращаем b")
+    b
+  }
+</pre></table></code></div></div><p>Каждая условная ветвь возвращает значение, указанное в последней строке. Поэтому не требуется использовать ключевое слово <strong>return</strong>.</p><p>По сути это тотже самый тернарный оператор в Java. Только в Kotlin от него отказались в пользу условных выражений.</p><h3 id="when">when</h3><p>По мере роста сложности условного выражения можно подумать о замене <strong>if-else</strong> на <strong>when</strong>. Ключевое слово <strong>when</strong> призвано заменить оператор <strong>switch</strong>, присутствующий в C-подобных языках. А его простейшая реализация может выглядеть так:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>when (x) {
+  1 -&gt; print("x == 1")
+  2 -&gt; print("x == 2")
+  else -&gt; { // обратите внимание на блок, можно добавить несколько строк кода
+    print("x is neither 1 nor 2")
+  }
+}
+</pre></table></code></div></div><p>Каждая ветвь выражения <strong>when</strong> состоит из условия, стрелки <strong>-&gt;</strong> и выполняемого действия (результата). Указанные значения последовательно сравниваются с предоставленным аргументом-условием пока не будет найдено совпадение. Если совпадения не найдено, то выполняется ветка <strong>else</strong>.</p><p><strong>When</strong> можно использовать как выражение, т.е. оно может вернуть значение и присвоить его переменной. Если ветки покрывают <strong>не все</strong> возможные значения, то наличие ветки <strong>else</strong> обязательно.</p><p>Если для нескольких значений нужно выполнить одно и тоже действие, то их можно перечислить в одной ветке через запятую:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>when (x) {
+  0, 1 -&gt; print("x == 0 or x == 1")
+  else -&gt; print("otherwise")
+}
+</pre></table></code></div></div><p>Помимо конкретных значений можно использовать произвольные выражения:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>when (x) {
+  parseInt(s) -&gt; print("s encodes x")
+  else -&gt; print("s does not encode x")
+}
+</pre></table></code></div></div><p>И даже проверять, входит ли значение в заданный интервал и есть ли оно в коллекции:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre>when (x) {
+  in 1..10 -&gt; print("x is in the range")
+  in validNumbers -&gt; print("x is valid")
+  !in 10..20 -&gt; print("x is outside the range")
+  else -&gt; print("none of the above")
+}
+</pre></table></code></div></div><hr /><h2 id="циклы">Циклы</h2><h3 id="цикл-for">Цикл for</h3><p>Цикл <strong>for</strong> позволяет пройтись по всем элементам списка.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>for (item in collection)
+</pre></table></code></div></div><p>Из примера видно, что <strong>for</strong> имеет отличный от Java синтаксис: нет переменной цикла, изменяемой на каждом шаге, а также проверки выхода из цикла. Он чем-то напоминает <strong>forEach</strong> в Java.</p><p>В таком случае сразу возникает вопрос: как пройтись по определенному диапазону? Для этого нужно задать диапазон при помощи оператора <code class="language-plaintext highlighter-rouge">..</code>. При этом второе значение всегда является частью диапазона.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>for(i in 1..5) {
+  ...
+}
+</pre></table></code></div></div><p>Диапазон можно заменить переменной:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>val range = 1..5
+for(i in range) {
+  ...
+}
+</pre></table></code></div></div><p>Если вам нужно узнать индекс позиции используйте функцию <code class="language-plaintext highlighter-rouge">indices</code>:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>for (i in collection.indices) {
+  ...
+}
+</pre></table></code></div></div><p>Если вам одновременно нужен и объект, и индекс - функцию <code class="language-plaintext highlighter-rouge">withIndex</code>:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>for ((index, item) in collection.withIndex()) {
+  ...
+}
+</pre></table></code></div></div><p>Чтобы перебрать объекты в обратном порядке используйте вместо оператора <code class="language-plaintext highlighter-rouge">..</code> функцию <code class="language-plaintext highlighter-rouge">downTo</code>:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>for(i in 5 downTo 1) {
+  ...
+}
+// результат: 54321
+</pre></table></code></div></div><p>При этом числа можно перебирать с произвольным шагом при помощи функции <code class="language-plaintext highlighter-rouge">step</code>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>for(i in 1..8 step 2) {
+  ...
+}
+// результат: 1357
+
+
+for (i in 8 downTo 1 step 2) {
+  ...
+}
+// результат: 8642
+</pre></table></code></div></div><p>Чтобы исключить из цикла последний элемент используется функция <code class="language-plaintext highlighter-rouge">until</code>. По сути она заменяет выражение <code class="language-plaintext highlighter-rouge">size - 1</code>, которое используется, чтобы не выйти за пределы массива.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>for (i in 1 until 5) {       
+    ...
+}
+// результат: 1234
+</pre></table></code></div></div><h3 id="циклы-while-do-while">Циклы while, do-while</h3><p>Данные циклы работают также как и в Java.</p><p>Цикл <strong>while</strong> будет выполнять команды в своём блоке, пока условие остаётся истинным.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>while (x &gt; 0) {
+  x--
+}
+</pre></table></code></div></div><p>Ну а <strong>do-while</strong> отличается от <strong>while</strong> тем, что сначала выполняет команды в блоке, а потом проверяет условие.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>do {
+    x++
+} while (x &lt; 10)
+</pre></table></code></div></div><h3 id="цикл-foreach">Цикл forEach</h3><p>В стандартной библиотеке Kotlin есть функция <code class="language-plaintext highlighter-rouge">forEach</code>, которая может использоваться вместо обычного цикла <strong>for</strong>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre>// цикл for
+for (i in 1..5) {
+  ...
+}
+
+// forEach
+(1..5).forEach {
+  ...
+}
+</pre></table></code></div></div><p>Делает он тоже самое - перебирает каждый элемент заданного массива или диапазона. Также его можно встраивать в цепочку вызовов.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>listOf(1, 2, 3).filter( it == 2 ).forEach { println(it) }
+</pre></table></code></div></div><hr /><h2 id="операторы-перехода">Операторы перехода</h2><p>С помощью операторов перехода можно завершить работу функции, либо цикла. Виды операторов:</p><ul><li><strong>return</strong> - позволяет выйти из текущей функции.<li><strong>break</strong> - завершает выполнение цикла.<li><strong>continue</strong> - продолжает выполнение цикла со следующего шага, без выполнения оставшегося кода в текущем шаге.</ul><h3 id="метки">Метки</h3><p>Любому выражению можно присвоить метку - <strong>label</strong>. Каждая метка состоит из идентификатора, за которым следует знак <code class="language-plaintext highlighter-rouge">@</code>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>loop@ for (i in 1..5) {
+  ...
+}
+</pre></table></code></div></div><p>Данные метки используются совместно с операторами перехода для уточнения. Например, при наличии вложенных циклов можно явно указать, какой из них нужно остановить.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre>loop@ for (i in 1..5) {
+  for (j in 1..5) {
+    if (...)
+      break@loop
+  }
+}
+</pre></table></code></div></div><p>Если заменить оператор <strong>break</strong> на <strong>continue</strong>, то цикл с меткой <strong>loop</strong> продолжит работу со следующего шага.</p><p>Оператор <strong>return</strong> в данном случае сработает также как и <strong>break</strong> - позволит выйти из цикла и продолжить выполнение команд, которые следуют после него.</p><hr /><h2 id="функции">Функции</h2><p>Вместо того, чтобы повторять один и тот же ряд выражений везде, где требуется одинаковый результат, можно сгруппировать эти выражения в функцию и вызывать её. Объявляется функция с помощью ключевого слова <strong>fun</strong>, за которым следует её название, тип входных данных (если таковые имеются), тип возвращаемых данных (при необходимости) и тело функции.</p><p>Тело функции - это то место, где задаются выражения, которые выполняются при последующем вызове функции.</p><p>Входные данные (параметры) записываются в виде <em>имя: тип</em> и разделяются запятыми.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>fun generate(x: Int, y: Int): Int {
+	return x + y
+}
+</pre></table></code></div></div><p>При этом не обязательно объявлять функцию в теле класса. Т.е. можно создать файл, указать в нем название пакета и добавить в него нужные функции. Это удобно, когда есть методы, не относящиеся к реализации конкретного класса.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>// файл NewClass.kt
+package example
+
+fun someFun(...): String {...}
+</pre></table></code></div></div><h3 id="параметры-по-умолчанию">Параметры по умолчанию</h3><p>Параметры функции могут иметь значения <strong>по умолчанию</strong>. Очень удобно использовать, если мы заранее знаем, что чаще всего у такого параметра будет одно и тоже значение. Если параметру задано значение по умолчанию, то при объявлении функции его можно не указывать. Запись будет иметь вид <em>имя: тип = значение</em>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>fun read(b: Array&lt;Byte&gt;, off: Int = 0, len: Int = b.size()) {
+...
+}
+</pre></table></code></div></div><p>Переопределённые методы всегда используют значения по умолчанию, которые были заданы в базовом методе.</p><h3 id="именованные-параметры">Именованные параметры</h3><p>Если во входных данных функции несколько параметров и какие-то из них имеют значение по умолчанию, а какие-то нет, то при вызове такой функции Kotlin может запутаться.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>fun generate(first: Int, second: Int = 2, third: Int) {
+    println("$first $second $third")
+}
+
+generate(1, 3) // не компилируется
+</pre></table></code></div></div><p>В таких случаях следует использовать <strong>именованные параметры</strong>, т.е. явно указывать имена параметров при вызове функции.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>generate(1, third = 3) // теперь должно заработать
+</pre></table></code></div></div><p>Также именованные параметры удобно использовать, если у функции просто много параметров. Это позволяет сделать код визуально более понятным.</p><h3 id="функции-с-единственным-выражением">Функции с единственным выражением</h3><p>Когда функция возвращает одно единственное значение, то ключевое слово <strong>return</strong> может быть заменено на оператор присваивания, а фигурные скобки опускаются.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>fun generate(x: Int, y: Int): Int = x + y
+</pre></table></code></div></div><h3 id="переменное-число-параметров">Переменное число параметров</h3><p>Последний параметр в функции можно пометить модификатором <strong>vararg</strong>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>fun printNumbers(vararg integers: Int) {
+    for (number in integers) {
+        println("$number")
+    }
+}
+</pre></table></code></div></div><p>Тогда при вызове функции мы сможем передать не одно, а <strong>несколько</strong> значений.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>printNumbers(1, 2, 3, 4, 5)
+</pre></table></code></div></div><p>В одной функции таким образом можно пометить только один параметр. При этом, если этот параметр не будет последним, то значение для него можно будет передать только при помощи именованных параметров.</p><p>Также такому параметру в качестве значения можно передать массив. Но для этого массив нужно пометить знаком <strong>spread</strong> <code class="language-plaintext highlighter-rouge">*</code>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>val a = arrayOf(1, 2, 3)
+printNumbers(-1, 0, *a, 4)
+</pre></table></code></div></div><hr /><h2 id="классы">Классы</h2><p>Объявляются классы с помощью ключевого слова <strong>class</strong>. По умолчанию всем классам присваивается модификатор <strong>public</strong>, поэтому дополнительно его указывать не требуется.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>class Person {
+}
+</pre></table></code></div></div><h3 id="конструкторы">Конструкторы</h3><p>В Kotlin может быть несколько конструкторов - основной и дополнительные. Основной является частью заголовка класса и объявляется сразу после имени класса.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>class Person constructor(firstName: String)
+</pre></table></code></div></div><p>При этом, ключевое слово <strong>constructor</strong> необязательно указывать, если у класса нет аннотаций и модификаторов.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>class Person(firstName: String)
+</pre></table></code></div></div><p>Если при создании класса нужно что-либо инициализировать, то используется специальный блок <strong>init</strong>.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>class Person(firstName: String) {
+  init {
+    print("Name - $firstName")
+  }
+}
+</pre></table></code></div></div><p>Параметры основного конструктора могут быть использовать либо в блоке <strong>init</strong> (как показано выше), либо при инициализации свойств в теле класса.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>class Person(firstName: String) {
+  val key = firstName.toUpperCase()
+}
+</pre></table></code></div></div><p>Также есть еще один способ объявления и инициализации свойств основного конструктора - в самом конструкторе.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>class Person(val firstName: String, val lastName: String, var age: Int) {
+  ...
+}
+</pre></table></code></div></div><p>Дополнительные конструкторы всегда объявляются при помощи ключевого слова <strong>constructor</strong> в теле класса.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>class Person {
+    constructor(parent: Person) {
+        parent.children.add(this)
+    }
+}
+</pre></table></code></div></div><h3 id="геттеры-и-сеттеры">Геттеры и сеттеры</h3><p>При создании своего класса мы хотим сами управлять его свойствами, контролируя то, какие данные могут быть предоставлены или перезаписаны. С этой целью создаются get и set методы или иначе - геттеры и сеттеры. Цель get-метода - вернуть значение, а set-метода - записать полученное значение в свойство класса.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>class Person(firstName: String) {
+
+  val mame: String
+      get() = newName
+
+  var newName = firstName
+      set(value) {
+        field = value
+      }
+}
+</pre></table></code></div></div><p>Если get и set методы не были созданы вручную, то для таких свойств Kotlin незаметно сам их генерирует. При этом для свойства, объявленного ключевым словом <strong>val</strong>, генерируется get-метод, а для свойства, объявленного ключевым свойством <strong>var</strong> - и get, и set методы.</p><h3 id="наследование">Наследование</h3><p>Родительский класс объявляется сразу после основного конструктора (если конструктора нет - после имени класса) - ставится знак двоеточия <code class="language-plaintext highlighter-rouge">:</code> и указывается имя родительского класса.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>class Person(firstName: String) : BaseClass() {
+  ...
+}
+</pre></table></code></div></div><h3 id="создание-класса">Создание класса</h3><p>Для создания экземпляра класса нужно вызвать его конструктор. В отличие от Java, ключевое слово <strong>new</strong> не используется.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>val person = Person("Joe ")
+</pre></table></code></div></div><hr /><h2 id="полезные-ссылки">Полезные ссылки</h2><p><a href="https://kotlinlang.org/docs/reference/basic-syntax.html" title="kotlinlang.org">Официальная документация</a>. <br /> <a href="https://kotlinlang.ru/docs/reference/basic-syntax.html" title="kotlinlang.ru">Неофициальный русский перевод документации</a>. <br /> <a href="http://developer.alexanderklimov.ru/android/kotlin/" title="developer.alexanderklimov.ru">Статьи от А.Климова про Kotlin</a>. <br /> <a href="https://developer.android.com/kotlin/get-started" title="developer.android.com">Рекомендации Google по началу работы с Kotlin</a>.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/kotlin/'>Kotlin</a>, <a href='/categories/basics/'>Basics</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/kotlin/" class="post-tag no-text-decoration" >kotlin</a> <a href="/tags/theory/" class="post-tag no-text-decoration" >theory</a> <a href="/tags/syntax/" class="post-tag no-text-decoration" >syntax</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Поделиться</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text='Kotlin. Основной синтаксис' - Bimlibik&url=http://bimlibik.github.io/posts/kotlin-basic-syntax/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title='Kotlin. Основной синтаксис' - Bimlibik&u=http://bimlibik.github.io/posts/kotlin-basic-syntax/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text='Kotlin. Основной синтаксис' - Bimlibik&url=http://bimlibik.github.io/posts/kotlin-basic-syntax/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Последние обновления</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/about-android/">Что такое Android</a><li><a href="/posts/kotlin-inline-functions/">Kotlin. Встроенные (inline) функции</a><li><a href="/posts/kotlin-collections/">Kotlin. Коллекции</a><li><a href="/posts/kotlin-overview/">Kotlin. Общий обзор</a><li><a href="/posts/kotlin-sealed-classes/">Kotlin. Изолированные (запечатанные) классы (sealed classes).</a></ul></div><div id="access-tags"> <span>Популярные теги</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/theory/">theory</a> <a class="post-tag" href="/tags/kotlin/">kotlin</a> <a class="post-tag" href="/tags/android/">android</a> <a class="post-tag" href="/tags/basics/">basics</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/android-version/">android version</a> <a class="post-tag" href="/tags/ui/">ui</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/history/">history</a> <a class="post-tag" href="/tags/oop/">oop</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Содержание</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Недавно просмотренное</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/kotlin-overview/"><div class="card-body"> <span class="timeago small" > 02 June 2020 <i class="unloaded">2020-06-02T01:40:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Kotlin. Общий обзор</h3><div class="text-muted small"><p> Начало разработки Kotlin было анонсировано JetBrains в 2011 году. Планировался он как альтернатива языкам Java и Scala, так как тоже выполняется под управлением Java Virtual Machine. И спустя 6 лет...</p></div></div></a></div><div class="card"> <a href="/posts/kotlin-open-keyword/"><div class="card-body"> <span class="timeago small" > 05 June 2020 <i class="unloaded">2020-06-05T04:20:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Kotlin. Ключевое слово open. Наследование</h3><div class="text-muted small"><p> По умолчанию в Kotlin нельзя унаследовать один класс от другого. Связано это с тем, что всем классам при создании неявно задаётся статус final, который и блокирует возможность наследования. Если мы...</p></div></div></a></div><div class="card"> <a href="/posts/kotlin-visibility-modifiers/"><div class="card-body"> <span class="timeago small" > 05 June 2020 <i class="unloaded">2020-06-05T14:10:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Kotlin. Модификаторы доступа - private, protected, internal, public</h3><div class="text-muted small"><p> Любой класс, а также его конструкторы, свойства и функции имеют модификаторы доступа - это такие ключевые слова, с помощью которых можно задать область действия данных. Или иначе - они позволяют ре...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/kotlin-overview/" class="btn btn-outline-primary" prompt="Предыдущая статья"><p>Kotlin. Общий обзор</p></a> <a href="/posts/kotlin-open-keyword/" class="btn btn-outline-primary" prompt="Следующая статья"><p>Kotlin. Ключевое слово open. Наследование</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2023 <a href="https://github.com/Bimlibik">Bimlibik</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Популярные теги</h4><a class="post-tag" href="/tags/theory/">theory</a> <a class="post-tag" href="/tags/kotlin/">kotlin</a> <a class="post-tag" href="/tags/android/">android</a> <a class="post-tag" href="/tags/basics/">basics</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/android-version/">android version</a> <a class="post-tag" href="/tags/ui/">ui</a> <a class="post-tag" href="/tags/git/">git</a> <a class="post-tag" href="/tags/history/">history</a> <a class="post-tag" href="/tags/oop/">oop</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="http://bimlibik.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
