@@ -3,10 +3,10 @@
 -
   type: github
   icon: 'fab fa-github-alt'
--
-  type: telegram
-  icon: 'fab fa-telegram'
-  url: 'tg://resolve?domain=leslie_m'
+# -
+  # type: telegram
+  # icon: 'fab fa-telegram'
+  # url: ''
 # -
 #   type: twitter
 #   icon: 'fab fa-twitter'
